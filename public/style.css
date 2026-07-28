@@ -190,3 +190,28 @@ video{
     align-items: center;
 
 }
+#switchCameraBtn{
+
+    position: fixed;
+
+    bottom: 25px;
+
+    right: 25px;
+
+    z-index: 999;
+
+    padding: 14px 20px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background: rgba(0,0,0,.7);
+
+    color: white;
+
+    cursor: pointer;
+
+    font-size: 16px;
+
+}

@@ -58,6 +58,8 @@ cameraBtn.onclick = async()=>{
 
     cameraSection.classList.remove("hidden");
 
+    switchCameraBtn.style.display = "block";
+
     cameraBtn.classList.add("hidden");
 
     viewerBtn.classList.add("hidden");
@@ -130,6 +132,8 @@ cameraBtn.onclick = async()=>{
 
 viewerBtn.onclick = ()=>{
 
+
+    switchCameraBtn.style.display = "none";
 
     home.classList.add("hidden");
 
