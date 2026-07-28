@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Camera Connect</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+
+    <h1>📹 Camera Connect</h1>
+
+    <div id="home">
+
+        <button id="cameraBtn">
+            📷 Start Camera
+        </button>
+
+        <button id="viewerBtn">
+            👁 Join Viewer
+        </button>
+
+    </div>
+
+    <div id="cameraSection" class="hidden">
+
+        <h2>Your Camera Code</h2>
+
+        <div id="roomCode">----</div>
+
+        <p id="status">Waiting...</p>
+
+        <video
+            id="localVideo"
+            autoplay
+            muted
+            playsinline>
+        </video>
+
+    </div>
+
+    <div id="viewerSection" class="hidden">
+
+        <h2>Connect to Camera</h2>
+
+        <input
+            id="codeInput"
+            maxlength="4"
+            placeholder="0000">
+
+        <button id="connectBtn">
+
+            Connect
+
+        </button>
+
+        <video
+            id="remoteVideo"
+            autoplay
+            playsinline>
+        </video>
+
+    </div>
+
+</div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="script.js"></script>
+
+</body>
+</html>

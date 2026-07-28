@@ -1,0 +1,161 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+
+    background:#111827;
+    color:white;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    min-height:100vh;
+
+}
+
+.container{
+
+    width:90%;
+    max-width:900px;
+
+    background:#1f2937;
+
+    border-radius:20px;
+
+    padding:35px;
+
+    text-align:center;
+
+}
+
+h1{
+
+    margin-bottom:40px;
+
+}
+
+#home{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:20px;
+
+    align-items:center;
+
+}
+
+button{
+
+    width:260px;
+
+    height:55px;
+
+    border:none;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    font-size:18px;
+
+    font-weight:bold;
+
+}
+
+#cameraBtn{
+
+    background:#2563eb;
+    color:white;
+
+}
+
+#viewerBtn{
+
+    background:#10b981;
+    color:white;
+
+}
+
+#connectBtn{
+
+    background:#f59e0b;
+    color:white;
+
+    margin-top:20px;
+
+}
+
+.hidden{
+
+    display:none;
+
+}
+
+#roomCode{
+
+    width:220px;
+
+    margin:20px auto;
+
+    padding:18px;
+
+    background:#111827;
+
+    border-radius:12px;
+
+    border:2px solid #2563eb;
+
+    font-size:40px;
+
+    letter-spacing:8px;
+
+    font-weight:bold;
+
+}
+
+#status{
+
+    margin-bottom:25px;
+
+    color:#10b981;
+
+}
+
+input{
+
+    width:220px;
+
+    height:55px;
+
+    text-align:center;
+
+    border:none;
+
+    border-radius:10px;
+
+    font-size:24px;
+
+    letter-spacing:8px;
+
+}
+
+video{
+
+    width:100%;
+
+    max-width:700px;
+
+    margin-top:30px;
+
+    border-radius:15px;
+
+    background:black;
+
+}
