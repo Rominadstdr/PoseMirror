@@ -25,6 +25,7 @@ const codeInput = document.getElementById("codeInput");
 const status = document.getElementById("status");
 
 
+let currentCamera = "user";
 
 let localStream = null;
 
@@ -57,6 +58,10 @@ cameraBtn.onclick = async()=>{
 
     cameraSection.classList.remove("hidden");
 
+    cameraBtn.classList.add("hidden");
+
+    viewerBtn.classList.add("hidden");
+
 
     isCamera = true;
 
@@ -65,10 +70,12 @@ cameraBtn.onclick = async()=>{
 
 
         localStream =
-        await navigator.mediaDevices.getUserMedia({
+    await navigator.mediaDevices.getUserMedia({
 
-            video:true,
-            audio:true
+    video:{
+        facingMode: currentCamera
+    },
+    audio:true
 
         });
 
@@ -127,6 +134,10 @@ viewerBtn.onclick = ()=>{
     home.classList.add("hidden");
 
     viewerSection.classList.remove("hidden");
+
+    cameraBtn.classList.add("hidden");
+
+    viewerBtn.classList.add("hidden");
 
 
     isViewer = true;
@@ -385,5 +396,82 @@ peer.ontrack = (event)=>{
     remoteVideo.srcObject =
     event.streams[0];
 
+    remoteVideo.classList.add(
+    "full-screen-video"
+        );
+
+};
+const switchCameraBtn =
+document.getElementById("switchCameraBtn");
+
+
+switchCameraBtn.onclick = async()=>{
+
+
+    if(!isCamera) return;
+
+
+    // تغییر دوربین
+    currentCamera =
+    currentCamera === "user"
+    ? "environment"
+    : "user";
+
+
+    // خاموش کردن دوربین قبلی
+    if(localStream){
+
+        localStream
+        .getTracks()
+        .forEach(track=>{
+            track.stop();
+        });
+
+    }
+
+
+
+    // گرفتن دوربین جدید
+
+    localStream =
+    await navigator.mediaDevices.getUserMedia({
+
+        video:{
+            facingMode: currentCamera
+        },
+
+        audio:true
+
+    });
+
+
+
+    localVideo.srcObject =
+    localStream;
+
+    localVideo.classList.add(
+    "full-screen-video"
+        );
+
+    const newVideoTrack =
+localStream.getVideoTracks()[0];
+
+
+
+const sender =
+peer.getSenders()
+.find(
+    s => s.track && s.track.kind === "video"
+);
+
+
+
+if(sender){
+
+    await sender.replaceTrack(
+        newVideoTrack
+    );
+
+}
 
 };

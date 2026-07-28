@@ -159,3 +159,34 @@ video{
     background:black;
 
 }
+.hidden {
+    display: none;
+}
+
+
+.full-screen-video {
+
+    width: 100%;
+    height: 100vh;
+
+    object-fit: cover;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    z-index: 10;
+
+}
+
+
+.camera-mode {
+
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
