@@ -1,6 +1,7 @@
 const socket = io();
 
 
+
 // Buttons
 const cameraBtn = document.getElementById("cameraBtn");
 const viewerBtn = document.getElementById("viewerBtn");
@@ -17,6 +18,14 @@ const viewerSection = document.getElementById("viewerSection");
 const localVideo = document.getElementById("localVideo");
 const remoteVideo = document.getElementById("remoteVideo");
 
+const captureCanvas =
+document.getElementById("captureCanvas");
+
+const captureLocalBtn =
+document.getElementById("captureLocalBtn");
+
+const captureRemoteBtn =
+document.getElementById("captureRemoteBtn");
 
 // Inputs
 const roomCode = document.getElementById("roomCode");
@@ -125,7 +134,11 @@ cameraBtn.onclick = async()=>{
 
 };
 
+captureLocalBtn.onclick = ()=>{
 
+    takePhoto(localVideo);
+
+};
 
 
 // Viewer button
@@ -150,7 +163,11 @@ viewerBtn.onclick = ()=>{
 };
 
 
+captureRemoteBtn.onclick = ()=>{
 
+    takePhoto(remoteVideo);
+
+};
 
 // Viewer connect
 
@@ -479,3 +496,56 @@ if(sender){
 }
 
 };
+function takePhoto(video){
+
+    const ctx =
+    captureCanvas.getContext("2d");
+
+
+
+    captureCanvas.width =
+    video.videoWidth;
+
+    captureCanvas.height =
+    video.videoHeight;
+
+
+
+    ctx.drawImage(
+
+        video,
+
+        0,
+
+        0,
+
+        captureCanvas.width,
+
+        captureCanvas.height
+
+    );
+
+
+
+    const image =
+    captureCanvas.toDataURL(
+        "image/png"
+    );
+
+
+
+    const a =
+    document.createElement("a");
+
+
+
+    a.href = image;
+
+    a.download =
+    "PoseMirror.png";
+
+
+
+    a.click();
+
+}

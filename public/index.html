@@ -41,6 +41,9 @@
             muted
             playsinline>
         </video>
+        <button id="captureLocalBtn">
+        📸 Capture
+        </button>
         <button id="switchCameraBtn">
         🔄 Switch Camera
         </button>
@@ -68,9 +71,18 @@
             playsinline>
         </video>
 
+        <button id="captureRemoteBtn">
+        📸 Capture
+        </button>
+
     </div>
 
 </div>
+
+    <canvas
+    id="captureCanvas"
+    style="display:none;">
+    </canvas>
 
     <script src="/socket.io/socket.io.js"></script>
     <script src="script.js"></script>
