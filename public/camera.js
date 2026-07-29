@@ -42,6 +42,17 @@ await navigator.mediaDevices.getUserMedia({
 
         localVideo.srcObject = localStream;
 
+        const videoTrack =
+localStream.getVideoTracks()[0];
+
+
+if("ImageCapture" in window){
+
+    imageCapture =
+    new ImageCapture(videoTrack);
+
+}
+
         return localStream;
 
     }

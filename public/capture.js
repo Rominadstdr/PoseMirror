@@ -5,6 +5,8 @@
 const captureCanvas =
 document.getElementById("captureCanvas");
 
+let imageCapture = null;
+
 
 
 function takePhoto(video){
@@ -89,16 +91,42 @@ function downloadPhoto(image){
     link.click();
 
 }
-function captureLocalPhoto(){
+async function captureLocalPhoto(){
+
+    if(imageCapture){
+
+        try{
+
+            const blob =
+            await imageCapture.takePhoto();
+
+
+            const url =
+            URL.createObjectURL(blob);
+
+
+            downloadPhoto(url);
+
+            return;
+
+        }
+        catch(error){
+
+            console.log(
+                "ImageCapture failed:",
+                error
+            );
+
+        }
+
+    }
+
 
     const image =
-
     takePhoto(localVideo);
 
 
-
     if(!image) return;
-
 
 
     downloadPhoto(image);
