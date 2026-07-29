@@ -29,11 +29,15 @@
 
     <div id="cameraSection" class="hidden">
 
-        <h2>کد دوربین </h2>
+        <button id="backCameraBtn">← بازگشت</button>
+
+        <h2>ایجاد کد</h2>
 
         <div id="roomCode">----</div>
 
-        <p id="status">منتظر بمانید...</p>
+        <div id="qrcode"></div>
+
+        <p id="status">در انتظار اتصال...</p>
 
         <video
             id="localVideo"
@@ -42,7 +46,7 @@
             playsinline>
         </video>
         <button id="captureLocalBtn">
-        📸 عکس گرفتن
+        📸  ثبت عکس
         </button>
         <button id="switchCameraBtn">
         🔄 برگرداندن دوربین
@@ -52,7 +56,9 @@
 
     <div id="viewerSection" class="hidden">
 
-        <h2>وصل شدن به دوربین</h2>
+        <button id="backViewerBtn">← بازگشت</button>
+
+        <h2>اتصال به دوربین</h2>
 
         <input
             id="codeInput"
@@ -61,7 +67,7 @@
 
         <button id="connectBtn">
 
-            وصل شدن
+           اتصال
 
         </button>
 
@@ -72,7 +78,7 @@
         </video>
 
         <button id="captureRemoteBtn">
-        📸 عکس گرفتن
+        📸 ثبت عکس 
         </button>
 
     </div>
@@ -84,7 +90,16 @@
     style="display:none;">
     </canvas>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
     <script src="/socket.io/socket.io.js"></script>
+
+    <script src="ui.js"></script>
+    <script src="camera.js"></script>
+    <script src="webrtc.js"></script>
+    <script src="capture.js"></script>
+    <script src="qr.js"></script>
+
     <script src="script.js"></script>
 
 </body>

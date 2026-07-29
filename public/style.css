@@ -215,3 +215,44 @@ video{
     font-size: 16px;
 
 }
+#backCameraBtn,
+#backViewerBtn{
+
+    position: fixed;
+
+    top: 20px;
+    left: 20px;
+
+    padding: 12px 18px;
+
+    border: none;
+    border-radius: 10px;
+
+    background: rgba(0,0,0,.7);
+
+    color: white;
+
+    cursor: pointer;
+
+    z-index: 1000;
+
+}
+#qrcode{
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    margin: 15px auto;
+
+    padding: 10px;
+
+    background: white;
+
+    border-radius: 12px;
+
+    width: fit-content;
+
+}

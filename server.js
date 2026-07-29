@@ -1,28 +1,40 @@
+// ==========================================
+// PoseMirror Server
+// ==========================================
+
 const express = require("express");
 const http = require("http");
-const { Server } = require("socket.io");
-
 const path = require("path");
+const { Server } = require("socket.io");
 
 const app = express();
 
 const server = http.createServer(app);
 
-const io = new Server(server, {
-    cors: {
-        origin: "*"
+const io = new Server(server,{
+    cors:{
+        origin:"*"
     }
 });
 
+app.use(
+    express.static(
+        path.join(__dirname,"public")
+    )
+);
 
-app.use(express.static(path.join(__dirname, "public")));
 
+// ==========================================
+// Rooms
+// ==========================================
 
-// ذخیره اتاق‌ها
 const rooms = {};
 
 
-// ساخت کد ۴ رقمی
+// ==========================================
+// Generate 4 Digit Code
+// ==========================================
+
 function generateCode(){
 
     let code;
@@ -30,60 +42,111 @@ function generateCode(){
     do{
 
         code = Math.floor(
-            1000 + Math.random() * 9000
+            1000 +
+            Math.random()*9000
         ).toString();
 
     }while(rooms[code]);
-
 
     return code;
 
 }
 
 
+// ==========================================
+// Delete Room
+// ==========================================
 
-io.on("connection", (socket)=>{
+function deleteRoom(code){
+
+    if(!rooms[code]) return;
+
+    delete rooms[code];
+
+    console.log(
+        "Room Deleted:",
+        code
+    );
+
+}
 
 
-    console.log("User connected:", socket.id);
+// ==========================================
+// Find User Room
+// ==========================================
+
+function findRoom(socketId){
+
+    for(const code in rooms){
+
+        const room = rooms[code];
+
+        if(
+            room.camera === socketId ||
+            room.viewer === socketId
+        ){
+
+            return code;
+
+        }
+
+    }
+
+    return null;
+
+}
+// ==========================================
+// Socket Connection
+// ==========================================
+
+io.on("connection",(socket)=>{
+
+    console.log(
+        "User Connected:",
+        socket.id
+    );
 
 
 
-    // وقتی کاربر دوربین را فعال می‌کند
-    socket.on("camera-ready", ()=>{
+    // ==========================================
+    // Camera Ready
+    // ==========================================
 
+    socket.on("camera-ready",()=>{
 
-        const code = generateCode();
+        const code =
+        generateCode();
 
+        rooms[code]={
 
-        rooms[code] = {
+            camera:socket.id,
 
-            camera: socket.id,
-
-            viewer: null
+            viewer:null
 
         };
 
-
-        socket.emit("room-code", code);
-
-
-        console.log(
-            "New camera room:",
+        socket.emit(
+            "room-code",
             code
         );
 
+        console.log(
+            "Room Created:",
+            code
+        );
 
     });
 
 
 
-    // وقتی Viewer کد را وارد می‌کند
-    socket.on("join-room", (code)=>{
+    // ==========================================
+    // Viewer Join
+    // ==========================================
 
+    socket.on("join-room",(code)=>{
 
-        const room = rooms[code];
-
+        const room =
+        rooms[code];
 
         if(!room){
 
@@ -95,70 +158,92 @@ io.on("connection", (socket)=>{
 
         }
 
+        if(room.viewer){
 
-        room.viewer = socket.id;
+            socket.emit(
+                "room-full"
+            );
 
+            return;
+
+        }
+
+        room.viewer =
+        socket.id;
 
         socket.emit(
             "joined-room",
             code
         );
 
-
         io.to(room.camera)
-        .emit("viewer-ready");
-
+        .emit(
+            "viewer-ready"
+        );
 
         console.log(
-            "Viewer joined:",
+            "Viewer Joined:",
             code
         );
 
-
     });
-        // دریافت Offer از Camera و ارسال به Viewer
-    socket.on("offer", (data)=>{
 
-        const room = rooms[data.room];
+
+
+    // ==========================================
+    // Offer
+    // ==========================================
+
+    socket.on("offer",(data)=>{
+
+        const room =
+        rooms[data.room];
 
         if(!room) return;
-
 
         io.to(room.viewer)
-        .emit("offer", data);
+        .emit(
+            "offer",
+            data
+        );
 
     });
 
 
 
-    // دریافت Answer از Viewer و ارسال به Camera
-    socket.on("answer", (data)=>{
+    // ==========================================
+    // Answer
+    // ==========================================
 
-        const room = rooms[data.room];
+    socket.on("answer",(data)=>{
+
+        const room =
+        rooms[data.room];
 
         if(!room) return;
-
 
         io.to(room.camera)
-        .emit("answer", data);
+        .emit(
+            "answer",
+            data
+        );
 
     });
 
 
 
-    // رد و بدل کردن ICE Candidate ها
-    socket.on("ice-candidate", (data)=>{
+    // ==========================================
+    // ICE Candidate
+    // ==========================================
 
+    socket.on("ice-candidate",(data)=>{
 
-        const room = rooms[data.room];
-
+        const room =
+        rooms[data.room];
 
         if(!room) return;
 
-
-
-        if(socket.id === room.camera){
-
+        if(socket.id===room.camera){
 
             io.to(room.viewer)
             .emit(
@@ -166,9 +251,9 @@ io.on("connection", (socket)=>{
                 data
             );
 
+        }
 
-        }else{
-
+        else if(socket.id===room.viewer){
 
             io.to(room.camera)
             .emit(
@@ -176,62 +261,112 @@ io.on("connection", (socket)=>{
                 data
             );
 
-
         }
-
 
     });
 
 
 
+    // ==========================================
+    // Leave Room
+    // ==========================================
 
-    // وقتی کاربر قطع شد
-    socket.on("disconnect", ()=>{
+    socket.on("leave-room",()=>{
 
+        const code =
+        findRoom(socket.id);
 
-        console.log(
-            "User disconnected:",
-            socket.id
-        );
+        if(!code) return;
 
+        const room =
+        rooms[code];
 
-        for(const code in rooms){
+        if(socket.id===room.camera){
 
+            if(room.viewer){
 
-            const room = rooms[code];
-
-
-            if(room.camera === socket.id || room.viewer === socket.id){
-
-
-                delete rooms[code];
-
-
-                console.log(
-                    "Room deleted:",
-                    code
-                );
-
+                io.to(room.viewer)
+                .emit("peer-left");
 
             }
 
+            deleteRoom(code);
+
+        }
+
+        else if(socket.id===room.viewer){
+
+            room.viewer=null;
+
+            io.to(room.camera)
+            .emit("peer-left");
+
+        }
+
+    });
+        // ==========================================
+    // Disconnect
+    // ==========================================
+
+    socket.on("disconnect",()=>{
+
+        console.log(
+            "User Disconnected:",
+            socket.id
+        );
+
+        const code =
+        findRoom(socket.id);
+
+        if(!code) return;
+
+        const room =
+        rooms[code];
+
+        if(!room) return;
+
+
+
+        // Camera خارج شد
+        if(room.camera===socket.id){
+
+            if(room.viewer){
+
+                io.to(room.viewer)
+                .emit("peer-left");
+
+            }
+
+            deleteRoom(code);
+
         }
 
 
+
+        // Viewer خارج شد
+        else if(room.viewer===socket.id){
+
+            room.viewer=null;
+
+            io.to(room.camera)
+            .emit("peer-left");
+
+        }
+
     });
 
-
 });
+// ==========================================
+// Start Server
+// ==========================================
 
+const PORT =
+process.env.PORT || 3000;
 
-
-// اجرای سرور
-const PORT = process.env.PORT || 3000;
-
-server.listen(PORT, "0.0.0.0", ()=>{
+server.listen(PORT,"0.0.0.0",()=>{
 
     console.log(
-        `Server running on ${PORT}`
+        `Server running on port ${PORT}`
     );
 
 });
