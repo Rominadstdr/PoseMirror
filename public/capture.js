@@ -5,7 +5,7 @@
 const captureCanvas =
 document.getElementById("captureCanvas");
 
-let imageCapture = null;
+window.imageCapture = null;
 
 
 

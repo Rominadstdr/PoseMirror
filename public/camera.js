@@ -41,15 +41,24 @@ await navigator.mediaDevices.getUserMedia({
 });
 
         localVideo.srcObject = localStream;
-        
+
+
+
         const videoTrack =
 localStream.getVideoTracks()[0];
 
 
 if("ImageCapture" in window){
 
-    imageCapture =
+    window.imageCapture =
     new ImageCapture(videoTrack);
+
+    console.log("ImageCapture enabled");
+
+}
+else{
+
+    console.log("ImageCapture not supported");
 
 }
 
