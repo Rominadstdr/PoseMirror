@@ -50,10 +50,26 @@ localStream.getVideoTracks()[0];
 
 if("ImageCapture" in window){
 
-    window.imageCapture =
-    new ImageCapture(videoTrack);
+    try{
 
-    console.log("ImageCapture enabled");
+        window.imageCapture =
+        new ImageCapture(videoTrack);
+
+        console.log(
+            "ImageCapture enabled"
+        );
+
+    }
+    catch(error){
+
+        console.log(
+            "ImageCapture failed",
+            error
+        );
+
+        window.imageCapture = null;
+
+    }
 
 }
 else{
