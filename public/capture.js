@@ -93,33 +93,40 @@ function downloadPhoto(image){
 }
 async function captureLocalPhoto(){
 
-    if(imageCapture){
 
-        try{
-
-            const blob =
-            await imageCapture.takePhoto();
-
-
-            const url =
-            URL.createObjectURL(blob);
+    console.log(
+        "ImageCapture:",
+        window.imageCapture
+    );
 
 
-            downloadPhoto(url);
+    if(window.imageCapture){
 
-            return;
+        console.log("Using ImageCapture");
 
-        }
-        catch(error){
 
-            console.log(
-                "ImageCapture failed:",
-                error
-            );
+        const blob =
+        await window.imageCapture.takePhoto();
 
-        }
+
+        console.log(
+            "Photo size:",
+            blob.size
+        );
+
+
+        const url =
+        URL.createObjectURL(blob);
+
+
+        downloadPhoto(url);
+
+        return;
 
     }
+
+
+    console.log("Using Canvas");
 
 
     const image =
@@ -131,6 +138,8 @@ async function captureLocalPhoto(){
 
     downloadPhoto(image);
 
+
+    
 }
 function captureRemotePhoto(){
 
