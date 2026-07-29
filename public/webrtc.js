@@ -49,45 +49,73 @@ peer.ontrack = (event)=>{
     );
 
 
-    remoteVideo.srcObject =
-    event.streams[0];
+    if(
+        remoteVideo.srcObject !== event.streams[0]
+    ){
+
+        remoteVideo.srcObject =
+        event.streams[0];
+
+    }
 
 
-    remoteVideo.autoplay = true;
-    remoteVideo.playsInline = true;
-
-
-    setTimeout(()=>{
+    remoteVideo.play()
+    .catch(error=>{
 
         console.log(
-            "Video:",
-            remoteVideo.videoWidth,
-            remoteVideo.videoHeight
+            "Play error:",
+            error
         );
 
+    });
 
-    },3000);
 
 };
 
 }
 async function addLocalTracks(){
 
-    if(!localStream) return;
+    if(!localStream || !peer) return;
+
+
+    const existingTracks =
+    peer.getSenders()
+    .map(sender=>sender.track)
+    .filter(Boolean);
+
+
 
     localStream
-
     .getTracks()
-
     .forEach(track=>{
 
-        peer.addTrack(
 
-            track,
+        if(
+            existingTracks.includes(track)
+        ){
 
-            localStream
+            console.log(
+                "Track already added:",
+                track.kind
+            );
 
+            return;
+
+        }
+
+
+
+        console.log(
+            "Adding track:",
+            track.kind
         );
+
+
+        peer.addTrack(
+            track,
+            localStream
+        );
+
 
     });
 
