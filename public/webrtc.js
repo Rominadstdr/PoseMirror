@@ -44,27 +44,44 @@ function createPeer(){
 
  peer.ontrack = (event)=>{
 
-    console.log("Remote track received");
+    console.log(
+        "Remote track received"
+    );
 
 
-    remoteVideo.srcObject =
-    event.streams[0];
+    const stream = event.streams[0];
 
 
-    remoteVideo.play()
-    .then(()=>{
+    if(remoteVideo.srcObject === stream){
 
-        console.log("Remote video playing");
+        return;
 
-    })
-    .catch(error=>{
+    }
 
-        console.log(
-            "Play error:",
-            error
-        );
 
-    });
+    remoteVideo.srcObject = stream;
+
+
+    remoteVideo.onloadedmetadata = ()=>{
+
+        remoteVideo.play()
+        .then(()=>{
+
+            console.log(
+                "Remote video playing"
+            );
+
+        })
+        .catch(error=>{
+
+            console.log(
+                "Play error:",
+                error
+            );
+
+        });
+
+    };
 
 };
 
