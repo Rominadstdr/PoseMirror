@@ -385,14 +385,14 @@ hideBackButtons();
 
 if(roomFromQR){
 
-    showViewer();
+    viewerBtn.click();
 
-    isViewer = true;
+    codeInput.value = roomFromQR;
 
-    room = roomFromQR;
+    setTimeout(()=>{
 
-    codeInput.value = room;
+        connectBtn.click();
 
-    connectBtn.click();
+    },300);
 
 }
