@@ -113,6 +113,11 @@ cameraBtn.onclick = async()=>{
 
     await addLocalTracks();
 
+
+    console.log(
+    "Camera ready"
+);
+
     socket.emit("camera-ready");
 
 };
@@ -160,6 +165,11 @@ connectBtn.onclick = ()=>{
     }
 
     room = code;
+
+    console.log(
+    "Viewer joining:",
+    code
+);
 
     socket.emit(
 
