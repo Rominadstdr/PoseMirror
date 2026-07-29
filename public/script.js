@@ -69,6 +69,14 @@ const status =
 document.getElementById("status");
 
 
+// ==========================================
+// Auto Join From QR
+// ==========================================
+
+const params = new URLSearchParams(window.location.search);
+
+const roomFromQR = params.get("room");
+
 // ---------- State ----------
 
 let room = "";
@@ -76,7 +84,6 @@ let room = "";
 let isCamera = false;
 
 let isViewer = false;
-
 
 // ==========================================
 // Camera Button
@@ -243,6 +250,8 @@ socket.on("ice-candidate",async(data)=>{
 
 socket.on("joined-room",(code)=>{
 
+    history.replaceState({}, "", "/");
+
     room = code;
 
     setStatus("در حال برقراری ارتباط...");
@@ -260,6 +269,9 @@ socket.on("peer-left",()=>{
     setStatus("طرف مقابل خارج شد.");
 
 });
+
+
+
 // ==========================================
 // Camera Buttons
 // ==========================================
@@ -357,3 +369,21 @@ hideSwitchCamera();
 hideCaptureButtons();
 
 hideBackButtons();
+
+// ==========================================
+// Auto Join
+// ==========================================
+
+if(roomFromQR){
+
+    showViewer();
+
+    isViewer = true;
+
+    room = roomFromQR;
+
+    codeInput.value = room;
+
+    connectBtn.click();
+
+}
