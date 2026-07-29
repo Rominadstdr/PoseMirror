@@ -42,13 +42,17 @@ function createPeer(){
 
 
 
-    peer.ontrack = (event)=>{
+   peer.ontrack = (event)=>{
 
-        remoteVideo.srcObject =
+    console.log(
+        "Remote track received",
+        event.streams[0]
+    );
 
-        event.streams[0];
+    remoteVideo.srcObject =
+    event.streams[0];
 
-    };
+};
 
 }
 async function addLocalTracks(){
