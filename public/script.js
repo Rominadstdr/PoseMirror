@@ -146,6 +146,8 @@ viewerBtn.onclick = ()=>{
 
 connectBtn.onclick = ()=>{
 
+    createPeer();
+
     const code =
     codeInput.value.trim();
 
