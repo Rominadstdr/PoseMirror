@@ -18,8 +18,18 @@ async function startCamera(){
         await navigator.mediaDevices.getUserMedia({
 
             video:{
-                facingMode: currentCamera
-            },
+
+    facingMode: currentCamera,
+
+    width:{
+        ideal:3840
+    },
+
+    height:{
+        ideal:2160
+    }
+
+},
 
             audio:true
 

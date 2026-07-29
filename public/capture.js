@@ -31,8 +31,13 @@ function takePhoto(video){
 
 
 
-    const ctx =
-    captureCanvas.getContext("2d");
+    const ctx = captureCanvas.getContext("2d",{
+    alpha:false,
+    desynchronized:false
+});
+
+ctx.imageSmoothingEnabled = true;
+ctx.imageSmoothingQuality = "high";
 
 
 
@@ -53,8 +58,9 @@ function takePhoto(video){
 
 
     return captureCanvas.toDataURL(
-        "image/png"
-    );
+    "image/jpeg",
+    1.0
+);
 
 }
 function downloadPhoto(image){
@@ -76,7 +82,7 @@ function downloadPhoto(image){
     link.href = image;
 
     link.download =
-    `PoseMirror-${time}.png`;
+    `PoseMirror-${time}.jpg`;
 
 
 
