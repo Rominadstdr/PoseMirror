@@ -45,8 +45,7 @@ function createPeer(){
 peer.ontrack = (event)=>{
 
     console.log(
-        "Remote track received",
-        event.streams[0]
+        "Remote track received"
     );
 
 
@@ -54,39 +53,20 @@ peer.ontrack = (event)=>{
     event.streams[0];
 
 
-    console.log(
-        "Stream assigned:",
-        remoteVideo.srcObject
-    );
+    remoteVideo.autoplay = true;
+    remoteVideo.playsInline = true;
 
 
-    remoteVideo.onloadedmetadata = ()=>{
+    setTimeout(()=>{
 
         console.log(
-            "Video metadata loaded",
+            "Video:",
             remoteVideo.videoWidth,
             remoteVideo.videoHeight
         );
 
 
-        remoteVideo.play()
-        .then(()=>{
-
-            console.log(
-                "Video playing"
-            );
-
-        })
-        .catch(error=>{
-
-            console.log(
-                "Play error:",
-                error
-            );
-
-        });
-
-    };
+    },3000);
 
 };
 
