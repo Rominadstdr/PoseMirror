@@ -41,14 +41,9 @@ await navigator.mediaDevices.getUserMedia({
 });
 
         localVideo.srcObject = localStream;
+        
         const videoTrack =
 localStream.getVideoTracks()[0];
-
-
-console.log(
-    "Camera settings:",
-    videoTrack.getSettings()
-);
 
 
 if("ImageCapture" in window){
@@ -56,16 +51,8 @@ if("ImageCapture" in window){
     imageCapture =
     new ImageCapture(videoTrack);
 
-    console.log("ImageCapture enabled");
-
-}
-else{
-
-    console.log("ImageCapture not supported");
-
 }
 
-       
 
         return localStream;
 
