@@ -42,26 +42,6 @@ await navigator.mediaDevices.getUserMedia({
 
     localVideo.srcObject = localStream;
 
-    // ارسال ترک‌های دوربین به WebRTC
-
-localStream
-.getTracks()
-.forEach(track=>{
-
-    console.log(
-        "Adding track:",
-        track.kind
-    );
-
-
-    peer.addTrack(
-        track,
-        localStream
-    );
-
-});
-
-
         const videoTrack =
 localStream.getVideoTracks()[0];
 
