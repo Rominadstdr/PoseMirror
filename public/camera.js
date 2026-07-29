@@ -15,25 +15,30 @@ async function startCamera(){
     try{
 
         localStream =
-        await navigator.mediaDevices.getUserMedia({
+await navigator.mediaDevices.getUserMedia({
 
-            video:{
+    video:{
 
-    facingMode: currentCamera,
+        facingMode: currentCamera,
 
-    width:{
-        ideal:3840
+        width:{
+            ideal:1280
+        },
+
+        height:{
+            ideal:720
+        },
+
+        frameRate:{
+            ideal:30,
+            max:30
+        }
+
     },
 
-    height:{
-        ideal:2160
-    }
+    audio:true
 
-},
-
-            audio:true
-
-        });
+});
 
         localVideo.srcObject = localStream;
 
@@ -74,21 +79,21 @@ function stopCamera(){
 async function switchCamera(){
 
     currentCamera =
-
     currentCamera === "user"
-
     ? "environment"
-
     : "user";
-
 
 
     const stream =
     await startCamera();
 
-    await addLocalTracks();
 
     if(!stream) return;
+
+
+
+    const newVideoTrack =
+    stream.getVideoTracks()[0];
 
 
 
@@ -111,9 +116,7 @@ async function switchCamera(){
         if(sender){
 
             await sender.replaceTrack(
-
-                stream.getVideoTracks()[0]
-
+                newVideoTrack
             );
 
         }
