@@ -1,3 +1,5 @@
+const qrContainer = document.getElementById("qrcode");
+
 function createQRCode(code){
 
     qrContainer.innerHTML = "";
