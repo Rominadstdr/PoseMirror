@@ -137,7 +137,32 @@ io.on("connection",(socket)=>{
 
     });
 
+    //
+    // Refresh Button
+    //
+    socket.on("refresh-room",(oldCode)=>{
 
+    const oldRoom = rooms[oldCode];
+
+    if(!oldRoom) return;
+
+    if(oldRoom.camera !== socket.id) return;
+
+    delete rooms[oldCode];
+
+    const newCode = generateCode();
+
+    rooms[newCode] = {
+
+        camera: socket.id,
+
+        viewer: null
+
+    };
+
+    socket.emit("room-code",newCode);
+
+    });
 
     // ==========================================
     // Viewer Join

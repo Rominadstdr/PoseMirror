@@ -35,6 +35,9 @@ document.getElementById("backCameraBtn");
 const backViewerBtn =
 document.getElementById("backViewerBtn");
 
+const refreshCodeBtn =
+document.getElementById("refreshCodeBtn");
+
 
 // ---------- Sections ----------
 
@@ -299,6 +302,12 @@ captureLocalBtn.onclick = ()=>{
 captureRemoteBtn.onclick = ()=>{
 
     captureRemotePhoto();
+
+};
+
+refreshCodeBtn.onclick = ()=>{
+
+    socket.emit("refresh-room",room);
 
 };
 

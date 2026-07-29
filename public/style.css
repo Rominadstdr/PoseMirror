@@ -256,3 +256,40 @@ video{
     width: fit-content;
 
 }
+.room-code-container{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:12px;
+
+    margin:15px 0;
+
+}
+
+#refreshCodeBtn{
+
+    width:42px;
+
+    height:42px;
+
+    border:none;
+
+    border-radius:50%;
+
+    cursor:pointer;
+
+    font-size:20px;
+
+}
+
+#refreshCodeBtn:hover{
+
+    transform:rotate(180deg);
+
+    transition:.3s;
+
+}
