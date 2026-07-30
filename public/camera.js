@@ -35,17 +35,6 @@ await navigator.mediaDevices.getUserMedia({
 
     localVideo.srcObject = localStream;
 
-    console.log(
-    "LOCAL CAMERA:",
-    localStream.getVideoTracks()[0].getSettings()
-);
-
-console.log(
-    "VIDEO SIZE:",
-    localVideo.videoWidth,
-    localVideo.videoHeight
-);
-
         const videoTrack =
 localStream.getVideoTracks()[0];
 

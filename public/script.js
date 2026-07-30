@@ -105,6 +105,15 @@ cameraBtn.onclick = async()=>{
 
     await addLocalTracks();
 
+    console.log(
+    "Senders:",
+    peer.getSenders().map(sender => ({
+        kind: sender.track?.kind,
+        readyState: sender.track?.readyState,
+        muted: sender.track?.muted
+    }))
+);
+
     showSwitchCamera();
 
     showLocalCapture();
@@ -217,10 +226,6 @@ socket.on("invalid-code",()=>{
 socket.on("viewer-ready",async()=>{
 
     if(!isCamera) return;
-
-
-    await addLocalTracks();
-
 
     await createOffer();
 
