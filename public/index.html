@@ -5,33 +5,103 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Camera Connect</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="modern.css">
+    
 </head>
 <body>
 
     <div class="container">
 
-    <h1>📹 آینه</h1>
+    <h1>آینه</h1>
 
     <div id="home">
 
-        
+    <div class="hero">
 
-        <button id="cameraBtn">
-            📷 دوربین
+        <div class="logo">
+
+            📷
+
+        </div>
+
+        <h1 class="app-title">
+
+            PoseMirror
+
+        </h1>
+
+        <p class="subtitle">
+
+            Wireless Camera Monitor
+
+        </p>
+
+    </div>
+
+
+    <div class="home-buttons">
+
+        <button id="cameraBtn" class="primary-btn">
+
+
+            <span>📷 شروع دوربین</span>
+
         </button>
 
-        <button id="viewerBtn">
-            👁 تماشاگر
+
+        <button id="viewerBtn" class="secondary-btn">
+
+
+            <span>👁 اتصال به دوربین</span>
+
         </button>
 
     </div>
 
+
+    <div class="features">
+
+        <div class="feature">
+
+            ⚡ سریع
+
+        </div>
+
+        <div class="feature">
+
+           🔒 امن
+
+        </div>
+
+        <div class="feature">
+
+            🎥 کیفیت HD
+
+        </div>
+
+    </div>
+
+</div>
+
     <div id="cameraSection" class="hidden">
 
-        <button id="backCameraBtn">← بازگشت</button>
+    <button id="backCameraBtn">
 
-        <h2>ایجاد کد</h2>
+        ←
+
+    </button>
+
+        <div class="camera-header">
+
+            <div class="connection-badge">
+
+                در حال آماده‌سازی دوربین...
+
+            </div>
+
+        </div>
+
+        <h2>کد اتصال</h2>
 
         <div id="roomCode">----</div>
 
@@ -43,24 +113,50 @@
 
         <p id="status">در انتظار اتصال...</p>
 
-        <video
-            id="localVideo"
-            autoplay
-            muted
-            playsinline>
-        </video>
-        <button id="captureLocalBtn">
-        📸  ثبت عکس
-        </button>
-        <button id="switchCameraBtn">
-        🔄 برگرداندن دوربین
-        </button>
+
+        <div class="video-container">
+
+            <video
+        id="localVideo"
+        autoplay
+        muted
+        playsinline>
+            </video>
+
+            <div class="connection-badge">
+        در انتظار اتصال...
+            </div>
+
+        </div>
+
+
+        <div class="bottom-controls">
+
+    <button id="switchCameraBtn">
+        🔄
+    </button>
+
+    <button id="captureLocalBtn">
+        📸
+    </button>
+
+        </div>
 
     </div>
 
     <div id="viewerSection" class="hidden">
 
-        <button id="backViewerBtn">← بازگشت</button>
+        <div class="viewer-header">
+
+            <div class="connection-badge">
+
+        Viewer
+
+            </div>
+
+        </div>
+
+        <button id="backViewerBtn">←</button>
 
         <h2>اتصال به دوربین</h2>
 
@@ -75,11 +171,19 @@
 
         </button>
 
-        <video
-            id="remoteVideo"
-            autoplay
-            playsinline>
-        </video>
+        <div class="video-container">
+
+            <video
+        id="remoteVideo"
+        autoplay
+        playsinline>
+            </video>
+
+            <div class="connection-badge">
+        در حال اتصال...
+            </div>
+
+        </div>
 
         <button id="captureRemoteBtn">
         📸 ثبت عکس 
