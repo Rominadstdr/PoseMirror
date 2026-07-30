@@ -4,7 +4,9 @@
 
 let localStream = null;
 
-let currentCamera = "user";
+let currentCamera = {
+    facingMode:"user"
+};
 
 
 
@@ -18,25 +20,10 @@ async function startCamera(){
 await navigator.mediaDevices.getUserMedia({
 
     video:{
+    facingMode: currentCamera
+},
 
-        facingMode: currentCamera,
-
-        width:{
-            ideal:1280
-        },
-
-        height:{
-            ideal:720
-        },
-
-        frameRate:{
-            ideal:30,
-            max:30
-        }
-
-    },
-
-    audio:true
+    audio:false
 
 });
 
