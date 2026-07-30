@@ -2,35 +2,112 @@
 // UI Manager
 // ==============================
 
-function showHome(){
+// ==============================
+// UI Manager
+// ==============================
 
-    home.classList.remove("hidden");
 
-    cameraSection.classList.add("hidden");
+function changePage(showPage){
 
-    viewerSection.classList.add("hidden");
+
+    const pages = [
+
+        home,
+
+        cameraSection,
+
+        viewerSection
+
+    ];
+
+
+
+    pages.forEach(page=>{
+
+
+        if(page === showPage){
+
+
+            page.classList.remove("hidden");
+
+
+            page.classList.remove(
+                "page-exit"
+            );
+
+
+            // برای اجرای دوباره animation
+
+            void page.offsetWidth;
+
+
+            page.classList.add(
+                "page-enter"
+            );
+
+
+        }
+
+        else{
+
+
+            if(!page.classList.contains("hidden")){
+
+
+                page.classList.remove(
+                    "page-enter"
+                );
+
+
+                page.classList.add(
+                    "page-exit"
+                );
+
+
+
+                setTimeout(()=>{
+
+
+                    page.classList.add(
+                        "hidden"
+                    );
+
+
+                },300);
+
+
+            }
+
+
+        }
+
+
+    });
+
 
 }
+
+
+
+function showHome(){
+
+    changePage(home);
+
+}
+
 
 
 function showCamera(){
 
-    home.classList.add("hidden");
-
-    cameraSection.classList.remove("hidden");
-
-    viewerSection.classList.add("hidden");
+    changePage(cameraSection);
 
 }
 
 
+
 function showViewer(){
 
-    home.classList.add("hidden");
-
-    cameraSection.classList.add("hidden");
-
-    viewerSection.classList.remove("hidden");
+    changePage(viewerSection);
 
 }
 

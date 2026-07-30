@@ -251,19 +251,45 @@ button:active{
 
     width:100%;
 
-    aspect-ratio:9/16;
+    height:calc(100vh - 40px);
+
+    max-height:900px;
+
+    aspect-ratio:auto;
 
     overflow:hidden;
 
-    border-radius:28px;
+    border-radius:30px;
 
-    background:black;
+    background:#000;
 
     box-shadow:var(--shadow);
 
-    border:1px solid rgba(255,255,255,.05);
+}
+@media(max-width:600px){
 
-    margin-top:20px;
+    .video-container{
+
+        position:fixed;
+
+        inset:0;
+
+        width:100vw;
+
+        height:100vh;
+
+        border-radius:0;
+
+        z-index:1;
+
+    }
+
+
+    .video-container video{
+
+        object-fit:cover;
+
+    }
 
 }
 .video-container video{
@@ -279,59 +305,53 @@ button:active{
 }
 .connection-badge{
 
-    position:absolute;
+    position:fixed;
 
-    top:18px;
+    top:30px;
 
     left:50%;
 
     transform:translateX(-50%);
 
-    background:rgba(0,0,0,.45);
-
-    backdrop-filter:blur(18px);
-
-    color:white;
-
-    border-radius:999px;
-
-    padding:10px 18px;
-
-    border:1px solid rgba(255,255,255,.08);
-
-    font-size:14px;
+    z-index:5;
 
 }
 .bottom-controls{
 
+    position:fixed;
+
+    bottom:35px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    z-index:5;
+
     display:flex;
 
-    justify-content:center;
-
-    gap:22px;
-
-    margin-top:20px;
+    gap:25px;
 
 }
 .bottom-controls button{
 
-    width:64px;
+    width:72px;
 
-    height:64px;
+    height:72px;
 
     border-radius:50%;
 
     border:none;
 
-    background:rgba(255,255,255,.08);
+    background:
 
-    backdrop-filter:blur(18px);
+    rgba(255,255,255,.12);
+
+    backdrop-filter:blur(20px);
 
     color:white;
 
-    font-size:22px;
-
-    transition:.25s;
+    font-size:26px;
 
 }
 .bottom-controls button:hover{
@@ -344,23 +364,13 @@ button:active{
 #backCameraBtn,
 #backViewerBtn{
 
-    width:52px;
+    position:fixed;
 
-    height:52px;
+    top:25px;
 
-    border-radius:50%;
+    right:20px;
 
-    border:none;
-
-    background:rgba(255,255,255,.08);
-
-    backdrop-filter:blur(16px);
-
-    color:white;
-
-    font-size:22px;
-
-    cursor:pointer;
+    z-index:10;
 
 }
 .qr-card,
@@ -379,5 +389,176 @@ button:active{
     border:1px solid rgba(255,255,255,.08);
 
     text-align:center;
+
+}
+/* =====================
+   Page Transition
+===================== */
+
+section{
+
+    animation-duration:.35s;
+
+    animation-timing-function:ease;
+
+}
+
+
+.page-enter{
+
+    animation-name:
+    pageEnter;
+
+}
+
+
+.page-exit{
+
+    animation-name:
+    pageExit;
+
+}
+
+
+@keyframes pageEnter{
+
+    from{
+
+        opacity:0;
+
+        transform:
+        translateX(40px);
+
+    }
+
+
+    to{
+
+        opacity:1;
+
+        transform:
+        translateX(0);
+
+    }
+
+}
+
+
+
+@keyframes pageExit{
+
+    from{
+
+        opacity:1;
+
+        transform:
+        translateX(0);
+
+    }
+
+
+    to{
+
+        opacity:0;
+
+        transform:
+        translateX(-40px);
+
+    }
+
+}
+
+/* =====================
+   Page Animation
+===================== */
+
+
+section{
+
+    animation-duration:.3s;
+
+    animation-fill-mode:both;
+
+}
+
+
+
+.page-enter{
+
+    animation-name:
+    slideIn;
+
+}
+
+
+
+.page-exit{
+
+    animation-name:
+    slideOut;
+
+}
+
+
+
+@keyframes slideIn{
+
+
+    from{
+
+        opacity:0;
+
+        transform:
+        translateX(35px);
+
+    }
+
+
+    to{
+
+        opacity:1;
+
+        transform:
+        translateX(0);
+
+    }
+
+
+}
+
+
+
+@keyframes slideOut{
+
+
+    from{
+
+        opacity:1;
+
+        transform:
+        translateX(0);
+
+    }
+
+
+    to{
+
+        opacity:0;
+
+        transform:
+        translateX(-35px);
+
+    }
+
+
+}
+.hidden{
+
+    display:none !important;
+
+}
+section{
+
+    width:100%;
 
 }
