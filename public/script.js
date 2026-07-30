@@ -99,6 +99,12 @@ cameraBtn.onclick = async()=>{
 
     showCamera();
 
+    createPeer();
+
+    await startCamera();
+
+    await addLocalTracks();
+
     showSwitchCamera();
 
     showLocalCapture();
@@ -107,11 +113,7 @@ cameraBtn.onclick = async()=>{
 
     setStatus("در حال آماده‌سازی دوربین...");
 
-    createPeer();
-
-    await startCamera();
-
-    await addLocalTracks();
+   
 
 
     console.log(
@@ -151,7 +153,6 @@ viewerBtn.onclick = ()=>{
 
 connectBtn.onclick = ()=>{
 
-    createPeer();
 
     const code =
     codeInput.value.trim();
@@ -217,9 +218,16 @@ socket.on("viewer-ready",async()=>{
 
     if(!isCamera) return;
 
+
+    await addLocalTracks();
+
+
     await createOffer();
 
-    setStatus("در حال اتصال...");
+
+    setStatus(
+        "در حال اتصال..."
+    );
 
 });
 
