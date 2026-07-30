@@ -163,7 +163,39 @@ body{
     rgba(255,122,0,.35);
 
 }
+.primary-btn1{
+
+    height:62px;
+
+    border:none;
+
+    border-radius:18px;
+
+    background:var(--primary);
+
+    color:white;
+
+    font-size:18px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+    box-shadow:
+    0 12px 30px
+    rgba(255,122,0,.35);
+
+}
 .primary-btn:hover{
+
+    background:var(--primary-hover);
+
+    transform:translateY(-3px);
+
+}
+.primary-btn1:hover{
 
     background:var(--primary-hover);
 
@@ -185,6 +217,8 @@ body{
     cursor:pointer;
 
     transition:.25s;
+
+    font-size:18px;
 
 }
 .secondary-btn:hover{
@@ -268,12 +302,14 @@ button:active{
 
     background:black;
 
+    border-radius: 10px;
+
 }
 .connection-badge{
 
     position:fixed;
 
-    top:50px;
+    top:80px;
 
     left:50%;
 
