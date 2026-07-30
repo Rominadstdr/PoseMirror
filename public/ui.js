@@ -35,9 +35,13 @@ function showViewer(){
 }
 
 
-function setStatus(text){
+function setStatus(text, type = "info") {
 
     status.textContent = text;
+
+    status.className = "";
+
+    status.classList.add(type);
 
 }
 

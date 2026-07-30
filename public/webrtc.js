@@ -66,23 +66,131 @@ function createPeer() {
 
     };
 
-    peer.onconnectionstatechange = () => {
-
-        console.log(
-            "Connection:",
-            peer.connectionState
-        );
-
-    };
-
     peer.oniceconnectionstatechange = () => {
 
-        console.log(
-            "ICE:",
-            peer.iceConnectionState
-        );
+    console.log(
+        "ICE:",
+        peer.iceConnectionState
+    );
 
-    };
+    switch(peer.iceConnectionState){
+
+        case "checking":
+
+            setStatus(
+                "در حال پیدا کردن مسیر ارتباط...",
+                "info"
+            );
+
+            break;
+
+        case "connected":
+
+            setStatus(
+                "🟢 ارتباط مستقیم برقرار شد",
+                "success"
+            );
+
+            break;
+
+        case "completed":
+
+            setStatus(
+                "🟢 اتصال کامل شد",
+                "success"
+            );
+
+            break;
+
+        case "failed":
+
+            setStatus(
+                "❌ ارتباط برقرار نشد",
+                "error"
+            );
+
+            break;
+
+        case "disconnected":
+
+            setStatus(
+                "⚠️ ارتباط قطع شد",
+                "error"
+            );
+
+            break;
+
+        case "closed":
+
+            setStatus(
+                "ارتباط بسته شد",
+                "error"
+            );
+
+            break;
+
+    }
+
+};
+
+    peer.onconnectionstatechange = () => {
+
+    console.log(
+        "Connection:",
+        peer.connectionState
+    );
+
+    switch(peer.connectionState){
+
+        case "connecting":
+
+            setStatus(
+                "در حال اتصال...",
+                "info"
+            );
+
+            break;
+
+        case "connected":
+
+            setStatus(
+                "✅ اتصال برقرار شد",
+                "success"
+            );
+
+            break;
+
+        case "disconnected":
+
+            setStatus(
+                "⚠️ ارتباط قطع شد",
+                "error"
+            );
+
+            break;
+
+        case "failed":
+
+            setStatus(
+                "❌ اتصال ناموفق",
+                "error"
+            );
+
+            break;
+
+        case "closed":
+
+            setStatus(
+                "ارتباط پایان یافت",
+                "error"
+            );
+
+            break;
+
+    }
+
+};
+
 
 }
 

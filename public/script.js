@@ -109,7 +109,10 @@ cameraBtn.onclick = async()=>{
 
     showCameraBack();
 
-    setStatus("در حال آماده‌سازی دوربین...");
+    setStatus(
+    "در حال آماده‌سازی دوربین...",
+    "info"
+    );
 
     socket.emit("camera-ready");
 
@@ -187,7 +190,10 @@ socket.on("room-code",(code)=>{
 
     updateQRCode(code);
 
-    setStatus("در انتظار اتصال...");
+    setStatus(
+    "در انتظار اتصال...",
+    "info"
+    );
 
 });
 
@@ -211,7 +217,10 @@ socket.on("viewer-ready", async()=>{
 
     await createOffer();
 
-    setStatus("در حال اتصال...");
+    setStatus(
+    "در حال برقراری ارتباط...",
+    "info"
+    );
 
 });
 
@@ -237,7 +246,10 @@ socket.on("answer",async(data)=>{
 
     await receiveAnswer(data);
 
-    setStatus("اتصال برقرار شد.");
+    setStatus(
+    "✓ اتصال برقرار شد",
+    "success"
+    );
 
 });
 
@@ -275,7 +287,10 @@ socket.on("peer-left",()=>{
 
     remoteVideo.srcObject = null;
 
-    setStatus("طرف مقابل خارج شد.");
+    setStatus(
+    "ارتباط قطع شد",
+    "error"
+    );
 
 });
 

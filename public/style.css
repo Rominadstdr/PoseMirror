@@ -293,3 +293,30 @@ video{
     transition:.3s;
 
 }
+#status{
+
+    margin-bottom:25px;
+
+    font-weight:bold;
+
+    transition:.25s;
+
+}
+
+.info{
+
+    color:#f59e0b;
+
+}
+
+.success{
+
+    color:#22c55e;
+
+}
+
+.error{
+
+    color:#ef4444;
+
+}
