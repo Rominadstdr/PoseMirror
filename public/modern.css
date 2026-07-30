@@ -40,7 +40,7 @@ body{
     color:var(--text);
 
     font-family:
-    Inter,
+    Vazirmatn,
     system-ui,
     sans-serif;
 
@@ -87,13 +87,9 @@ body{
     background:
 
     linear-gradient(
-
         135deg,
-
-        #3B82F6,
-
-        #2563EB
-
+        #FF7A00,
+        #FF9433
     );
 
     display:flex;
@@ -104,11 +100,13 @@ body{
 
     font-size:40px;
 
+    color:white;
+
     box-shadow:
 
     0 15px 40px
 
-    rgba(59,130,246,.35);
+    rgba(255,122,0,.35);
 
 }
 .app-title{
@@ -249,6 +247,12 @@ button:active{
 }
 .video-container{
 
+    position:relative;
+
+    width:100%;
+
+    aspect-ratio:9/16;
+
     overflow:hidden;
 
     border-radius:28px;
@@ -258,6 +262,8 @@ button:active{
     box-shadow:var(--shadow);
 
     border:1px solid rgba(255,255,255,.05);
+
+    margin-top:20px;
 
 }
 .video-container video{
@@ -273,6 +279,14 @@ button:active{
 }
 .connection-badge{
 
+    position:absolute;
+
+    top:18px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
     background:rgba(0,0,0,.45);
 
     backdrop-filter:blur(18px);
@@ -285,20 +299,18 @@ button:active{
 
     border:1px solid rgba(255,255,255,.08);
 
+    font-size:14px;
+
 }
 .bottom-controls{
 
-    position:absolute;
-
-    bottom:25px;
-
-    left:50%;
-
-    transform:translateX(-50%);
-
     display:flex;
 
+    justify-content:center;
+
     gap:22px;
+
+    margin-top:20px;
 
 }
 .bottom-controls button{
@@ -332,35 +344,40 @@ button:active{
 #backCameraBtn,
 #backViewerBtn{
 
-    position:absolute;
-
-    top:20px;
-
-    left:20px;
-
     width:52px;
 
     height:52px;
 
     border-radius:50%;
 
-    background:rgba(0,0,0,.45);
-
-    backdrop-filter:blur(16px);
-
-}
-.qr-card{
-
-    margin-top:22px;
-
-    padding:18px;
-
-    border-radius:22px;
+    border:none;
 
     background:rgba(255,255,255,.08);
 
+    backdrop-filter:blur(16px);
+
+    color:white;
+
+    font-size:22px;
+
+    cursor:pointer;
+
+}
+.qr-card,
+.connect-card{
+
+    margin-top:22px;
+
+    padding:22px;
+
+    border-radius:26px;
+
+    background:rgba(255,255,255,.06);
+
     backdrop-filter:blur(18px);
 
-    border:1px solid rgba(255,255,255,.1);
+    border:1px solid rgba(255,255,255,.08);
+
+    text-align:center;
 
 }

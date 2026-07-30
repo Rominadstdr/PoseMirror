@@ -1,28 +1,51 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fa" dir="rtl">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Camera Connect</title>
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>PoseMirror</title>
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700&display=swap" rel="stylesheet">
+
 
     <link rel="stylesheet" href="modern.css">
-    
+
+
 </head>
+
+
 <body>
 
-    <div class="container">
 
-    <h1>آینه</h1>
+<div class="container">
 
-    <div id="home">
+
+<!-- =========================
+        HOME
+========================= -->
+
+<section id="home">
+
 
     <div class="hero">
 
+
         <div class="logo">
 
-            📷
+            ◉
 
         </div>
+
 
         <h1 class="app-title">
 
@@ -30,36 +53,50 @@
 
         </h1>
 
+
         <p class="subtitle">
 
-            Wireless Camera Monitor
+            نمایش زنده دوربین گوشی
 
         </p>
 
+
     </div>
+
 
 
     <div class="home-buttons">
 
-        <button id="cameraBtn" class="primary-btn">
+
+        <button 
+        id="cameraBtn"
+        class="primary-btn">
 
 
-            <span>📷 شروع دوربین</span>
+            📷 شروع دوربین
+
 
         </button>
 
 
-        <button id="viewerBtn" class="secondary-btn">
+
+        <button 
+        id="viewerBtn"
+        class="secondary-btn">
 
 
-            <span>👁 اتصال به دوربین</span>
+            👁 اتصال به دوربین
+
 
         </button>
+
 
     </div>
 
 
+
     <div class="features">
+
 
         <div class="feature">
 
@@ -67,148 +104,308 @@
 
         </div>
 
-        <div class="feature">
-
-           🔒 امن
-
-        </div>
 
         <div class="feature">
 
-            🎥 کیفیت HD
+            🔒 امن
 
         </div>
+
+
+        <div class="feature">
+
+            🎥 HD
+
+        </div>
+
 
     </div>
 
-</div>
 
-    <div id="cameraSection" class="hidden">
+</section>
 
-    <button id="backCameraBtn">
+
+
+
+
+<!-- =========================
+        CAMERA
+========================= -->
+
+
+<section id="cameraSection" class="hidden">
+
+
+    <button 
+    id="backCameraBtn"
+    class="back-btn">
 
         ←
 
     </button>
 
-        <div class="camera-header">
 
-            <div class="connection-badge">
 
-                در حال آماده‌سازی دوربین...
+    <div class="qr-card">
 
-            </div>
+
+        <h3>
+
+            کد اتصال
+
+        </h3>
+
+
+
+        <div id="roomCode"
+        class="room-code">
+
+            ----
 
         </div>
 
-        <h2>کد اتصال</h2>
 
-        <div id="roomCode">----</div>
 
-        <button id="refreshCodeBtn" title="تولید کد جدید">
-        🔄
+        <div id="qrcode"
+        class="qr-box">
+
+        </div>
+
+
+
+        <button
+        id="refreshCodeBtn"
+        class="small-btn">
+
+
+            🔄 تولید کد جدید
+
+
         </button>
 
-        <div id="qrcode"></div>
 
-        <p id="status">در انتظار اتصال...</p>
+    </div>
 
 
-        <div class="video-container">
 
-            <video
+
+
+    <div class="video-container">
+
+
+        <video
         id="localVideo"
         autoplay
         muted
         playsinline>
-            </video>
-
-            <div class="connection-badge">
-        در انتظار اتصال...
-            </div>
-
-        </div>
+        </video>
 
 
-        <div class="bottom-controls">
 
-    <button id="switchCameraBtn">
-        🔄
-    </button>
+        <div 
+        class="connection-badge"
+        id="cameraStatus">
 
-    <button id="captureLocalBtn">
-        📸
-    </button>
+            🟡 در انتظار اتصال
 
         </div>
+
 
     </div>
 
-    <div id="viewerSection" class="hidden">
 
-        <div class="viewer-header">
 
-            <div class="connection-badge">
 
-        Viewer
 
-            </div>
+    <div class="bottom-controls">
 
-        </div>
 
-        <button id="backViewerBtn">←</button>
+        <button 
+        id="switchCameraBtn">
 
-        <h2>اتصال به دوربین</h2>
-
-        <input
-            id="codeInput"
-            maxlength="4"
-            placeholder="0000">
-
-        <button id="connectBtn">
-
-           اتصال
+            🔄
 
         </button>
 
-        <div class="video-container">
 
-            <video
+
+        <button 
+        id="captureLocalBtn">
+
+            📸
+
+        </button>
+
+
+    </div>
+
+
+</section>
+
+
+
+
+
+
+
+<!-- =========================
+        VIEWER
+========================= -->
+
+
+<section id="viewerSection"
+class="hidden">
+
+
+    <button 
+    id="backViewerBtn"
+    class="back-btn">
+
+        ←
+
+    </button>
+
+
+
+
+
+    <div class="connect-card">
+
+
+        <h3>
+
+            اتصال به دوربین
+
+        </h3>
+
+
+
+        <input
+        id="codeInput"
+        maxlength="4"
+        placeholder="0000">
+
+
+
+        <button
+        id="connectBtn"
+        class="primary-btn">
+
+
+            اتصال
+
+
+        </button>
+
+
+
+    </div>
+
+
+
+
+
+
+    <div class="video-container">
+
+
+        <video
         id="remoteVideo"
         autoplay
         playsinline>
-            </video>
+        </video>
 
-            <div class="connection-badge">
-        در حال اتصال...
-            </div>
+
+
+
+        <div
+        class="connection-badge"
+        id="viewerStatus">
+
+
+            🟡 در حال اتصال
+
 
         </div>
 
-        <button id="captureRemoteBtn">
-        📸 ثبت عکس 
-        </button>
+
 
     </div>
 
+
+
+
+
+    <div class="bottom-controls">
+
+
+        <button
+        id="captureRemoteBtn">
+
+
+            📸
+
+
+        </button>
+
+
+    </div>
+
+
+
+</section>
+
+
+
+
+
 </div>
 
-    <canvas
-    id="captureCanvas"
-    style="display:none;">
-    </canvas>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
-    <script src="/socket.io/socket.io.js"></script>
 
-    <script src="ui.js"></script>
-    <script src="camera.js"></script>
-    <script src="webrtc.js"></script>
-    <script src="capture.js"></script>
-    <script src="qr.js"></script>
 
-    <script src="script.js"></script>
+
+<!-- =========================
+        CANVAS
+========================= -->
+
+
+<canvas
+id="captureCanvas"
+style="display:none;">
+</canvas>
+
+
+
+
+
+
+<!-- =========================
+        SCRIPTS
+========================= -->
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+
+<script src="/socket.io/socket.io.js"></script>
+
+
+<script src="ui.js"></script>
+
+<script src="camera.js"></script>
+
+<script src="webrtc.js"></script>
+
+<script src="capture.js"></script>
+
+<script src="qr.js"></script>
+
+<script src="script.js"></script>
+
+
 
 </body>
+
 </html>
