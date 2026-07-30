@@ -58,11 +58,7 @@ peer.ontrack = (event)=>{
     const stream = event.streams[0];
 
 
-    if(remoteVideo.srcObject !== stream){
-
-        remoteVideo.srcObject = stream;
-
-    }
+    remoteVideo.srcObject = stream;
 
 
     remoteVideo.onloadedmetadata = ()=>{
@@ -82,11 +78,11 @@ peer.ontrack = (event)=>{
             );
 
         })
-        .catch(error=>{
+        .catch(err=>{
 
             console.log(
                 "Play error:",
-                error
+                err
             );
 
         });
