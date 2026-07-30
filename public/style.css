@@ -150,11 +150,9 @@ video{
 
     width:100%;
 
-    max-width:700px;
+    height:100%;
 
-    margin-top:30px;
-
-    border-radius:15px;
+    object-fit:cover;
 
     background:black;
 

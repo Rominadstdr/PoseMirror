@@ -20,20 +20,35 @@ async function startCamera(){
 await navigator.mediaDevices.getUserMedia({
 
     video:{
-        facingMode: currentCamera,
-        width:{
-            ideal:1280
-        },
-        height:{
-            ideal:720
-        }
+
+    facingMode: currentCamera,
+
+    width:{
+        ideal:1920,
+        max:1920
     },
+
+    height:{
+        ideal:1080,
+        max:1080
+    },
+
+    frameRate:{
+        ideal:30,
+        max:30
+    },
+
+    resizeMode:"crop-and-scale"
+
+},
 
     audio:false
 
 });
 
     localVideo.srcObject = localStream;
+
+    await localVideo.play().catch(()=>{});
 
         const videoTrack =
 localStream.getVideoTracks()[0];

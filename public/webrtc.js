@@ -58,6 +58,12 @@ function createPeer() {
         remoteVideo.srcObject =
             remoteStream;
 
+            remoteVideo.disablePictureInPicture = true;
+
+        remoteVideo.controls = false;
+
+        remoteVideo.muted = false;
+
         remoteVideo.autoplay = true;
         remoteVideo.playsInline = true;
 
@@ -224,6 +230,25 @@ async function addLocalTracks() {
             localStream
         );
 
+        const newSender =
+    peer.getSenders().find(s => s.track === track);
+
+if (newSender && track.kind === "video") {
+
+    const params = newSender.getParameters();
+
+    if (!params.encodings) {
+        params.encodings = [{}];
+    }
+
+    params.encodings[0].maxBitrate = 2500000;
+    params.encodings[0].maxFramerate = 30;
+
+    await newSender.setParameters(params)
+        .catch(console.error);
+
+}
+        
     }
 
 }
