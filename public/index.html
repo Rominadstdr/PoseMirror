@@ -146,45 +146,37 @@
 
 
 
-    <div class="qr-card">
+        <div class="bottom-sheet" id="qrSheet">
 
 
-        <h3>
-
-            کد اتصال
-
-        </h3>
+    <div class="sheet-handle"></div>
 
 
-
-        <div id="roomCode"
-        class="room-code">
-
-            ----
-
-        </div>
+    <h3>
+        کد اتصال
+    </h3>
 
 
+    <div id="roomCode" class="room-code">
 
-        <div id="qrcode"
-        class="qr-box">
-
-        </div>
-
-
-
-        <button
-        id="refreshCodeBtn"
-        class="small-btn">
-
-
-            🔄 تولید کد جدید
-
-
-        </button>
-
+        ----
 
     </div>
+
+
+    <div id="qrcode"></div>
+
+
+    <button
+    id="refreshCodeBtn"
+    class="small-btn">
+
+        🔄 تولید کد جدید
+
+    </button>
+
+
+        </div>
 
 
 
@@ -362,6 +354,7 @@ class="hidden">
 </div>
 
 
+        <p id="status" style="display:none"></p>
 
 
 

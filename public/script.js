@@ -71,6 +71,8 @@ document.getElementById("codeInput");
 const status =
 document.getElementById("status");
 
+const qrSheet =
+document.getElementById("qrSheet");
 
 // ==========================================
 // Auto Join From QR
@@ -389,7 +391,21 @@ window.addEventListener("beforeunload",()=>{
 
 });
 
+// ==========================================
+// QR Bottom Sheet
+// ==========================================
 
+if(qrSheet){
+
+    qrSheet.onclick = ()=>{
+
+        qrSheet.classList.toggle(
+            "active"
+        );
+
+    };
+
+}
 // ==========================================
 // Start App
 // ==========================================
