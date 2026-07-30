@@ -44,97 +44,37 @@ function createPeer(){
 
 peer.ontrack = (event)=>{
 
-    console.log(
-        "Remote track received:",
-        event.track.kind
-    );
+    console.log("Remote track:", event.track.kind);
 
+    if(!remoteVideo.srcObject){
 
-    if(event.track.kind !== "video"){
-        return;
+        remoteVideo.srcObject = new MediaStream();
+
     }
 
+    remoteVideo.srcObject.addTrack(event.track);
 
-    const stream = event.streams[0];
-
-
-    remoteVideo.srcObject = stream;
-
-
-    remoteVideo.onloadedmetadata = ()=>{
-
-        console.log(
-            "Video loaded:",
-            remoteVideo.videoWidth,
-            remoteVideo.videoHeight
-        );
-
-
-        remoteVideo.play()
-        .then(()=>{
-
-            console.log(
-                "Video playing"
-            );
-
-        })
-        .catch(err=>{
-
-            console.log(
-                "Play error:",
-                err
-            );
-
-        });
-
-    };
+    remoteVideo.play().catch(console.error);
 
 };
 
 }
 async function addLocalTracks(){
 
-    if(!localStream || !peer) return;
+    if(!peer || !localStream) return;
 
+    const senders = peer.getSenders();
 
-    const existingTracks =
-    peer.getSenders()
-    .map(sender=>sender.track)
-    .filter(Boolean);
+    localStream.getTracks().forEach(track=>{
 
-
-
-    localStream
-    .getTracks()
-    .forEach(track=>{
-
-
-        if(
-            existingTracks.includes(track)
-        ){
-
-            console.log(
-                "Track already added:",
-                track.kind
-            );
-
-            return;
-
-        }
-
-
-
-        console.log(
-            "Adding track:",
-            track.kind
+        const exists = senders.find(sender =>
+            sender.track &&
+            sender.track.kind === track.kind
         );
 
+        if(exists) return;
 
-        peer.addTrack(
-            track,
-            localStream
-        );
-
+        peer.addTrack(track, localStream);
 
     });
 
@@ -171,42 +111,20 @@ async function receiveOffer(data){
     room = data.room;
 
     await peer.setRemoteDescription(
-
-        new RTCSessionDescription(
-
-            data.offer
-
-        )
-
+        new RTCSessionDescription(data.offer)
     );
 
+    // مهم
+    await addLocalTracks();
 
+    const answer = await peer.createAnswer();
 
-    const answer =
+    await peer.setLocalDescription(answer);
 
-    await peer.createAnswer();
-
-    await peer.setLocalDescription(
-
+    socket.emit("answer",{
+        room,
         answer
-
-    );
-
-
-
-    socket.emit(
-
-        "answer",
-
-        {
-
-            room: room,
-
-            answer: answer
-
-        }
-
-    );
+    });
 
 }
 async function receiveAnswer(data){

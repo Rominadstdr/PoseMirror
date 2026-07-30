@@ -41,7 +41,7 @@ localStream.getVideoTracks()[0];
 
 if("ImageCapture" in window){
 
-    /*try{
+    try{
 
         window.imageCapture =
         new ImageCapture(videoTrack);
@@ -60,7 +60,7 @@ if("ImageCapture" in window){
 
         window.imageCapture = null;
 
-    }*/
+    }
 
 }
 else{
