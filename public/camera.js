@@ -20,8 +20,14 @@ async function startCamera(){
 await navigator.mediaDevices.getUserMedia({
 
     video:{
-    facingMode: currentCamera
-},
+        facingMode: currentCamera,
+        width:{
+            ideal:1280
+        },
+        height:{
+            ideal:720
+        }
+    },
 
     audio:false
 
@@ -35,7 +41,7 @@ localStream.getVideoTracks()[0];
 
 if("ImageCapture" in window){
 
-    try{
+    /*try{
 
         window.imageCapture =
         new ImageCapture(videoTrack);
@@ -54,7 +60,7 @@ if("ImageCapture" in window){
 
         window.imageCapture = null;
 
-    }
+    }*/
 
 }
 else{
