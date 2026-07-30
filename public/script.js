@@ -103,17 +103,6 @@ cameraBtn.onclick = async()=>{
 
     await startCamera();
 
-    await addLocalTracks();
-
-    console.log(
-    "Senders:",
-    peer.getSenders().map(sender => ({
-        kind: sender.track?.kind,
-        readyState: sender.track?.readyState,
-        muted: sender.track?.muted
-    }))
-);
-
     showSwitchCamera();
 
     showLocalCapture();
@@ -121,13 +110,6 @@ cameraBtn.onclick = async()=>{
     showCameraBack();
 
     setStatus("در حال آماده‌سازی دوربین...");
-
-   
-
-
-    console.log(
-    "Camera ready"
-);
 
     socket.emit("camera-ready");
 
@@ -223,16 +205,13 @@ socket.on("invalid-code",()=>{
 
 // ---------- Viewer وارد شد ----------
 
-socket.on("viewer-ready",async()=>{
+socket.on("viewer-ready", async()=>{
 
     if(!isCamera) return;
 
     await createOffer();
 
-
-    setStatus(
-        "در حال اتصال..."
-    );
+    setStatus("در حال اتصال...");
 
 });
 
@@ -292,6 +271,8 @@ socket.on("joined-room",(code)=>{
 
 socket.on("peer-left",()=>{
 
+    remoteVideo.pause();
+
     remoteVideo.srcObject = null;
 
     setStatus("طرف مقابل خارج شد.");
@@ -348,6 +329,8 @@ backCameraBtn.onclick = ()=>{
     stopCamera();
 
     closePeer();
+
+    remoteVideo.srcObject = null;
 
     clearQRCode();
 
