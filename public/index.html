@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
 
     <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
     <title>PoseMirror</title>
 
@@ -73,7 +73,7 @@
         class="primary-btn1">
 
 
-            📷 دوربین
+             دوربین
 
 
         </button>
@@ -85,7 +85,7 @@
         class="secondary-btn">
 
 
-            👁 اتصال به دوربین
+             اتصال به دوربین
 
 
         </button>
@@ -148,8 +148,10 @@
 
         <div class="qr-bar" id="qrSheet">
             
+            <div id="qrcode"></div>
+
     <h3>
-        کد اتصال
+     کد اتصال:
     </h3>
 
 
@@ -187,11 +189,11 @@
 
 
 
-        <div 
+        <div    
         class="connection-badge1"
         id="cameraStatus">
 
-            🟡 در انتظار اتصال
+             در انتظار اتصال
 
         </div>
 
@@ -298,21 +300,18 @@ class="hidden">
         id="remoteVideo"
         autoplay
         playsinline>
+        
+        
+        
         </video>
-
-
-
-
-        <div
+       
+        <div    
         class="connection-badge2"
-        id="viewerStatus">
+        id="cameraStatus">
 
-
-            🟡 در حال اتصال
-
+             در انتظار اتصال
 
         </div>
-
 
 
     </div>

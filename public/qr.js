@@ -9,8 +9,8 @@ function createQRCode(code){
 
     new QRCode(qrContainer,{
         text:url,
-        width:180,
-        height:180
+        width:80,
+        height:80
     });
 
 }

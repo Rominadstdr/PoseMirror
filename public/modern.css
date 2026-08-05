@@ -1,8 +1,8 @@
 :root{
 
-    --bg:#06070A;
+    --bg: #080B14;
 
-    --surface:#111318;
+    --surface:#111827;
 
     --card:rgba(255,255,255,.06);
 
@@ -10,21 +10,25 @@
 
     --border:rgba(255,255,255,.08);
 
-    --primary:#FF7A00;
+    --primary: #A8D8EA;
 
-    --primary-hover:#FF9433;
+    --primary-hover: #8FC9E3;
 
-    --success:#22C55E;
+    --success:#86EFAC;
 
-    --danger:#EF4444;
+    --danger:#FDA4AF;
 
     --text:#F8FAFC;
 
     --sub:#9CA3AF;
 
-    --shadow:0 30px 80px rgba(0,0,0,.45);
+    --shadow: 
+      0 30px 80px rgba(0,0,0,.45),
+      0 0 40px rgba(168,216,234,.12);
 
     --radius:26px;
+
+    --accent:#FCBAD3;
 
 }
 html,
@@ -40,7 +44,11 @@ body{
 
     overscroll-behavior:none;
 
-    touch-action:none;
+    
+}
+video,
+canvas {
+    touch-action: none;
 }
 .container{
 
@@ -54,7 +62,7 @@ body{
 
     overflow:hidden;
 
-    background-color: #252539;
+    background-color: #06070A;
     
     border-radius: 20px;
 }
@@ -90,10 +98,11 @@ body{
 
     linear-gradient(
         135deg,
-        #FF7A00,
-        #FF9433
+        #A8D8EA,
+        #AA96DA
     );
-
+    color: #06070A;
+    
     display:flex;
 
     justify-content:center;
@@ -105,13 +114,20 @@ body{
     color:white;
 
     box-shadow:
-
     0 15px 40px
-
-    rgba(255,122,0,.35);
+     rgba(168, 216, 234, 0.18);
 
 }
 .app-title{
+
+    background: linear-gradient(
+        135deg,
+        #A8D8EA,
+        #AA96DA
+    );
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 
     margin-top:25px;
 
@@ -119,9 +135,12 @@ body{
 
     font-weight:700;
 
+
 }
 .subtitle{
 
+    color: #F8FAFC;
+    
     margin-top:10px;
 
     color:var(--sub);
@@ -142,17 +161,19 @@ body{
 }
 .primary-btn{
 
-    height:25px;
+    height:50px;
+
+    margin-right:5px;
 
     border:none;
 
-    border-radius:18px;
+    border-radius:50px;
 
-    background:var(--primary);
+    background:var(--card);
 
-    color:white;
+    color: var(--primary);
 
-    font-size:16px;
+    font-size:14px;
 
     font-weight:600;
 
@@ -161,9 +182,8 @@ body{
     transition:.25s;
 
     box-shadow:
-    0 12px 30px
-    rgba(255,122,0,.35);
-
+     0 30px 80px 
+     rgba(168, 216, 234, 0.18)
 }
 .primary-btn1{
 
@@ -186,8 +206,8 @@ body{
     transition:.25s;
 
     box-shadow:
-    0 12px 30px
-    rgba(255,122,0,.35);
+     0 13px 20px 
+     rgba(168, 216, 234, 0.18)
 
 }
 .primary-btn:hover{
@@ -214,7 +234,7 @@ body{
 
     background:var(--card);
 
-    color:white;
+    color:rgb(255, 255, 255);
 
     cursor:pointer;
 
@@ -287,6 +307,8 @@ button:active{
 }
 .video-container{
 
+    position: relative;
+
     width:100%;
 
     aspect-ratio:9/16;
@@ -308,43 +330,49 @@ button:active{
 
     object-fit:contain;
 
-    background:black;
+    background:rgb(7, 7, 7);
 
-    
 
 }
 .connection-badge1{
 
-    position:absolute;
+    position: absolute;
 
-    top:16px;
+    top: 10px;
+    left: 50%;
 
-    left:170px;
+    transform: translateX(-50%);
 
-    padding: 12px 16px;
-
+    color:white;
+    
+   background: rgba(0, 0, 0, 0.45);
+    padding: 8px 16px;
     border-radius: 16px;
 
-    transform:translateX(-50%);
+    z-index: 5;
 
-    text-align:center;
+}
 
-    z-index:5;
-
-    backdrop-filter:blur(16px);
-
+#remoteVideo {
+    width: 100%;
+    display: block;
 }
 .connection-badge2{
 
-    position:absolute;
+    position: absolute;
 
-    top:150px;
+    top: 10px;
+    left: 50%;
 
-    left:50%;
+    transform: translateX(-50%);
 
-    transform:translateX(-50%);
+    color:white;
+    
+   background: rgba(0,0,0,.45);
+    padding: 8px 16px;
+    border-radius: 16px;
 
-    z-index:5;
+    z-index: 5;
 
 }
 .bottom-controls{
@@ -397,6 +425,10 @@ button:active{
 
     position:absolute;
 
+    height:30px;
+
+    width:50px;
+
     top:25px;
 
     left:20px;
@@ -411,7 +443,7 @@ button:active{
 
     margin-top:22px;
 
-    padding:22px;
+    padding:12px;
 
     border-radius:26px;
 
@@ -422,6 +454,21 @@ button:active{
     border:1px solid rgba(255,255,255,.08);
 
     text-align:center;
+
+    
+
+}
+
+.connect-card h3{
+
+    color:white;
+
+    font-size: 16px;
+
+    text-align:center;
+
+    justify-content: center;
+
 
 }
 .qr-bar{
@@ -438,6 +485,8 @@ button:active{
 
     margin-bottom:15px;
 
+    color:#ecf0f3; 
+
     background:rgba(255,255,255,.06);
 
     backdrop-filter:blur(18px);
@@ -451,14 +500,24 @@ button:active{
 
 .qr-bar h3{
 
+    display:flex;
+
     margin:0;
 
     font-size:15px;
+
+    color:#ecf0f3;
+
+    align-items: center;
+
+    justify-content: center;
 
 }
 
 
 .room-code{
+
+    display:flex;
 
     font-size:24px;
 
@@ -469,12 +528,74 @@ button:active{
 }
 
 
-#qrcode{
-
-    display:none;
-
+#qrcode {
+    display:flex;
+    width: 80px;
+    height: 80px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    z-index:10;
+    position: relative;
 }
-/* =====================
+
+#qrcode img {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.small-btn{
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    background: var(--card);
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    transition: .3s ease;
+    box-shadow: var(--shadow);
+    transform: translateX(90px);
+}
+
+.small-btn:hover {
+    background: var(--card-hover);
+    transform: rotate(90deg);
+}
+
+.small-btn:active {
+    transform: scale(.9);
+}
+
+#codeInput{
+    width: 140px;
+    height: 44px;
+    padding: 0 15px;
+
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+
+    color: var(--text);
+    font-size: 18px;
+    font-weight: 600;
+    text-align: center;
+    letter-spacing: 3px;
+
+    outline: none;
+    backdrop-filter: blur(10px);
+
+    transition: .3s ease;}
+
+    #codeInput::placeholder {
+    color: var(--sub);
+    letter-spacing: normal;
+}
+
+
+/*==================
    Page Transition
 ===================== */
 
