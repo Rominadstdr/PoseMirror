@@ -54,6 +54,9 @@ body{
 
     overflow:hidden;
 
+    background-color: #111318;
+    
+    border-radius: 20px;
 }
 .glass{
 
