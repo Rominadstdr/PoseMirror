@@ -51,20 +51,13 @@ canvas {
     touch-action: none;
 }
 .container{
-
     width:100%;
-
     max-width:520px;
-
-    height:100dvh;
-
+    min-height:100dvh;
+    height:auto;
     margin:auto;
-
     overflow:hidden;
-
-    background-color: #06070A;
-    
-    border-radius: 20px;
+    background:#06070A;
 }
 .glass{
 
@@ -473,6 +466,9 @@ button:active{
 }
 .qr-bar{
 
+    min-height:100px;
+    flex-shrink:0;
+
     display:flex;
 
     align-items:center;
@@ -544,27 +540,29 @@ button:active{
 }
 
 .small-btn{
-    width: 42px;
-    height: 42px;
-    border-radius: 50%;
-    border: 1px solid var(--border);
-    background: var(--card);
-    color: var(--primary);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    backdrop-filter: blur(10px);
-    transition: .3s ease;
-    box-shadow: var(--shadow);
-    transform: translateX(90px);
+    width:42px;
+    height:42px;
+    border-radius:50%;
+    border:1px solid var(--border);
+    background:var(--card);
+    color:var(--primary);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    cursor:pointer;
+    backdrop-filter:blur(10px);
+    box-shadow:var(--shadow);
+
+    margin-right:90px;
+    transition:.3s ease;
 }
 
-.small-btn:hover {
-    background: var(--card-hover);
-    transform: rotate(90deg);
+.small-btn:hover{
+    background:var(--card-hover);
+    transform:rotate(90deg);
 }
-
 .small-btn:active {
     transform: scale(.9);
 }
