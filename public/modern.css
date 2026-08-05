@@ -473,11 +473,11 @@ button:active{
 
     align-items:center;
 
-    justify-content:center;
+    justify-content:space-between;
 
-    gap:15px;
+    gap:10px;
 
-    padding:12px 18px;
+    padding:12px ;
 
     margin-bottom:15px;
 
