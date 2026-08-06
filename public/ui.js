@@ -110,15 +110,51 @@ function showViewer(){
     changePage(viewerSection);
 
 }
+function updateStatus(elementId, text, type){
 
+    const status = document.getElementById(elementId);
 
-function setStatus(text, type = "info") {
+    if(!status) return;
 
     status.textContent = text;
 
-    status.className = "";
+    status.classList.remove(
+        "status-waiting",
+        "status-connected",
+        "status-error"
+    );
 
     status.classList.add(type);
+}
+
+function setStatus(message,type){
+
+    const badge = isCamera
+    ? document.getElementById("cameraStatus")
+    : document.getElementById("viewerStatus");
+
+    if(!badge) return;
+
+    badge.textContent = message;
+
+    badge.classList.remove(
+        "status-waiting",
+        "status-connected",
+        "status-error"
+    );
+
+
+    if(type === "success"){
+        badge.classList.add("status-connected");
+    }
+
+    else if(type === "error"){
+        badge.classList.add("status-error");
+    }
+
+    else{
+        badge.classList.add("status-waiting");
+    }
 
 }
 

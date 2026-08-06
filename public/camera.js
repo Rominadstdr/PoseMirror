@@ -4,13 +4,16 @@
 
 let localStream = null;
 
-let currentCamera = {
-    facingMode:"user"
-};
+let currentCamera = "user";
 
 
 
 async function startCamera(){
+
+    setStatus(
+    "در انتظار اتصال",
+    "info"
+        );
 
     stopCamera();
 
@@ -20,26 +23,19 @@ async function startCamera(){
 await navigator.mediaDevices.getUserMedia({
 
     video:{
-
     facingMode: currentCamera,
 
     width:{
-        ideal:1920,
-        max:1920
+        ideal:1280
     },
 
     height:{
-        ideal:1080,
-        max:1080
+        ideal:720
     },
 
     frameRate:{
-        ideal:30,
-        max:30
-    },
-
-    resizeMode:"crop-and-scale"
-
+        ideal:30
+    }
 },
 
     audio:false

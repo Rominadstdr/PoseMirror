@@ -330,6 +330,10 @@ captureRemoteBtn.onclick = ()=>{
 
 refreshCodeBtn.onclick = ()=>{
 
+    if(!room){
+        return;
+    }
+
     socket.emit("refresh-room",room);
 
 };
