@@ -194,49 +194,41 @@
 
     </div>
 
-<div id="focusControl" class="control-group" style="display:none;">
-    <div id="zoomControl" style="display:none;">
-    <label for="zoomSlider">Zoom</label>
-    <input
-    type="range"
-    id="zoomSlider"
-    min="1"
-    max="1"
-    step="0.1"
-    value="1">
-        </div>
+<button id="cameraControlsBtn" class="control-toggle">
+    ⚙️ Camera Controls
+</button>
 
-        <button id="torchBtn" style="display:none;">
-            Flash
-        </button>
+<div id="cameraControlsPanel" class="camera-panel">
 
-        <div id="exposureControl" style="display:none;">
-            <label for="exposureSlider">Exposure</label>
-            <input
-        type="range"
-        id="exposureSlider"
-        min="-2"
-        max="2"
-        step="0.1"
-        value="0">
-            </div>
+    <div id="zoomControl" class="control-group" style="display:none;">
+        <label for="zoomSlider">Zoom</label>
+        <input type="range" id="zoomSlider" min="1" max="1" step="0.1" value="1">
+    </div>
 
-        <div id="focusControl" style="display:none;">
-             <label for="focusSelect">Focus</label>
+    <button id="torchBtn" class="control-btn" style="display:none;">
+        Flash
+    </button>
 
-            <select id="focusSelect">
+    <div id="exposureControl" class="control-group" style="display:none;">
+        <label for="exposureSlider">Exposure</label>
+        <input type="range" id="exposureSlider" min="-2" max="2" step="0.1" value="0">
+    </div>
+
+    <div id="focusControl" class="control-group" style="display:none;">
+        <label for="focusSelect">Focus</label>
+        <select id="focusSelect">
             <option value="">Loading...</option>
-            </select>
-        </div>
-
-    <div id="qualityControl">
-         <label for="qualitySelect">Quality</label>
-
-        <select id="qualitySelect">
-        <option value="720">720p</option>
-        <option value="1080">1080p</option>
         </select>
     </div>
+
+    <div id="qualityControl" class="control-group">
+        <label for="qualitySelect">Quality</label>
+        <select id="qualitySelect">
+            <option value="720">720p</option>
+            <option value="1080">1080p</option>
+        </select>
+    </div>
+
 </div>
         
 
