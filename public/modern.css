@@ -891,3 +891,83 @@ section{
 .control-btn:hover{
     background:#374151;
 }
+.video-container{
+    position:relative;
+}
+
+.camera-settings-btn{
+    position:absolute;
+    top:12px;
+    right:12px;
+
+    width:42px;
+    height:42px;
+
+    border:none;
+    border-radius:50%;
+
+    background:rgba(17,24,39,.8);
+    color:#fff;
+    font-size:20px;
+    cursor:pointer;
+
+    z-index:20;
+}
+
+.camera-settings-panel{
+    position:absolute;
+
+    top:60px;
+    right:12px;
+
+    width:240px;
+
+    background:rgba(17,24,39,.96);
+    border:1px solid #374151;
+    border-radius:18px;
+
+    padding:16px;
+
+    display:none;
+    flex-direction:column;
+    gap:14px;
+
+    z-index:20;
+}
+
+.camera-settings-panel.open{
+    display:flex;
+}
+
+.control-group{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+}
+
+.control-group label{
+    color:#d1d5db;
+    font-size:13px;
+}
+
+.control-group input[type="range"]{
+    width:100%;
+}
+
+.control-group select{
+    width:100%;
+    padding:10px;
+    border-radius:10px;
+    border:1px solid #374151;
+    background:#111827;
+    color:white;
+}
+
+.control-btn{
+    width:100%;
+    padding:10px;
+    border:none;
+    border-radius:10px;
+    background:#374151;
+    color:white;
+}

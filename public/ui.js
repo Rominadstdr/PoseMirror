@@ -252,12 +252,20 @@ function showViewerBack(){
     backViewerBtn.classList.remove("hidden");
 
 }
-
 const cameraControlsBtn = document.getElementById("cameraControlsBtn");
 const cameraControlsPanel = document.getElementById("cameraControlsPanel");
 
-if (cameraControlsBtn && cameraControlsPanel) {
-    cameraControlsBtn.addEventListener("click", () => {
-        cameraControlsPanel.classList.toggle("open");
-    });
-}
+cameraControlsBtn?.addEventListener("click", (e) => {
+    e.stopPropagation();
+    cameraControlsPanel.classList.toggle("open");
+});
+
+document.addEventListener("click", (e) => {
+    if (
+        cameraControlsPanel.classList.contains("open") &&
+        !cameraControlsPanel.contains(e.target) &&
+        e.target !== cameraControlsBtn
+    ){
+        cameraControlsPanel.classList.remove("open");
+    }
+});
