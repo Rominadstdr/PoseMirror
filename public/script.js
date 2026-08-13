@@ -361,6 +361,14 @@ captureRemoteBtn.onclick = ()=>{
 
 };
 
+flashToggle.onclick = async()=>{
+
+    await toggleFlash();
+
+    flashToggle.classList.toggle("active");
+
+};
+
 refreshCodeBtn.onclick = ()=>{
 
     if(!room){

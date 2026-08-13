@@ -7,6 +7,7 @@ let localStream = null;
 
 let currentCamera = "user";
 
+let flashEnabled = false;
 
 
 async function startCamera(){
@@ -161,6 +162,32 @@ async function switchCamera(){
 
         }
 
+    }
+
+}
+async function toggleFlash(){
+
+    if(!localStream) return;
+
+    const track = localStream.getVideoTracks()[0];
+    const capabilities = track.getCapabilities();
+
+    console.log(capabilities);
+
+    if(!capabilities.torch){
+        alert("فلش این دستگاه پشتیبانی نمی‌شود.");
+        return;
+    }
+
+    flashEnabled = !flashEnabled;
+
+    try{
+        await track.applyConstraints({
+            advanced:[{ torch: flashEnabled }]
+        });
+    }
+    catch(error){
+        console.error(error);
     }
 
 }
