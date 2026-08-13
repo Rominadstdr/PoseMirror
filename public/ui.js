@@ -1,6 +1,3 @@
-// ==============================
-// UI Manager
-// ==============================
 
 // ==============================
 // UI Manager
@@ -127,15 +124,15 @@ function updateStatus(elementId, text, type){
     status.classList.add(type);
 }
 
-function setStatus(message,type){
-
+function setStatus(message, type) {
     const badge = isCamera
-    ? document.getElementById("cameraStatus")
-    : document.getElementById("viewerStatus");
+        ? document.getElementById("cameraStatus")
+        : document.getElementById("viewerStatus");
 
-    if(!badge) return;
+    if (!badge) return;
 
-    badge.textContent = message;
+    const text = badge.querySelector(".status-text");
+    text.textContent = message;
 
     badge.classList.remove(
         "status-waiting",
@@ -143,19 +140,13 @@ function setStatus(message,type){
         "status-error"
     );
 
-
-    if(type === "success"){
+    if (type === "success") {
         badge.classList.add("status-connected");
-    }
-
-    else if(type === "error"){
+    } else if (type === "error") {
         badge.classList.add("status-error");
-    }
-
-    else{
+    } else {
         badge.classList.add("status-waiting");
     }
-
 }
 
 

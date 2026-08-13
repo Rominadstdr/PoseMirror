@@ -1,33 +1,20 @@
 :root{
 
     --bg: #080B14;
-
     --surface:#111827;
-
     --card:rgba(255,255,255,.06);
-
     --card-hover:rgba(255,255,255,.10);
-
     --border:rgba(255,255,255,.08);
-
     --primary: #A8D8EA;
-
     --primary-hover: #8FC9E3;
-
     --success:#86EFAC;
-
     --danger:#FDA4AF;
-
     --text:#F8FAFC;
-
     --sub:#9CA3AF;
-
     --shadow: 
       0 30px 80px rgba(0,0,0,.45),
       0 0 40px rgba(168,216,234,.12);
-
     --radius:26px;
-
     --accent:#FCBAD3;
 
 }
@@ -35,15 +22,10 @@ html,
 body{
 
     width:100%;
-
     height:100%;
-
     margin:0;
-
     overflow:hidden;
-
     overscroll-behavior:none;
-
     
 }
 video,
@@ -51,6 +33,7 @@ canvas {
     touch-action: none;
 }
 .container{
+
     width:100%;
     max-width:520px;
     min-height:100dvh;
@@ -58,54 +41,40 @@ canvas {
     margin:auto;
     overflow:hidden;
     background:#06070A;
+
 }
 .glass{
 
     background:var(--card);
-
     backdrop-filter:blur(18px);
-
     border:1px solid var(--border);
-
     border-radius:26px;
 
 }
 .hero{
 
     margin-top:40px;
-
     text-align:center;
 
 }
 .logo{
 
     width:90px;
-
     height:90px;
-
     margin:auto;
-
     border-radius:50%;
-
     background:
-
     linear-gradient(
         135deg,
         #A8D8EA,
         #AA96DA
     );
     color: #06070A;
-    
     display:flex;
-
     justify-content:center;
-
     align-items:center;
-
     font-size:40px;
-
     color:white;
-
     box-shadow:
     0 15px 40px
      rgba(168, 216, 234, 0.18);
@@ -118,86 +87,57 @@ canvas {
         #A8D8EA,
         #AA96DA
     );
-
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-
     margin-top:25px;
-
     font-size:38px;
-
     font-weight:700;
-
 
 }
 .subtitle{
 
     color: #F8FAFC;
-    
     margin-top:10px;
-
     color:var(--sub);
-
     font-size:17px;
 
 }
 .home-buttons{
 
     display:flex;
-
     flex-direction:column;
-
     gap:18px;
-
     margin-top:60px;
 
 }
 .primary-btn{
 
     height:50px;
-
     margin-right:5px;
-
     border:none;
-
     border-radius:50px;
-
     background:var(--card);
-
     color: var(--primary);
-
     font-size:14px;
-
     font-weight:600;
-
     cursor:pointer;
-
     transition:.25s;
-
     box-shadow:
      0 30px 80px 
-     rgba(168, 216, 234, 0.18)
+     rgba(168, 216, 234, 0.18);
+
 }
 .primary-btn1{
 
     height:62px;
-
     border:none;
-
     border-radius:18px;
-
     background:var(--primary);
-
     color:white;
-
     font-size:18px;
-
     font-weight:600;
-
     cursor:pointer;
-
     transition:.25s;
-
     box-shadow:
      0 13px 20px 
      rgba(168, 216, 234, 0.18)
@@ -206,40 +146,29 @@ canvas {
 .primary-btn:hover{
 
     background:var(--primary-hover);
-
     transform:translateY(-3px);
 
 }
 .primary-btn1:hover{
 
     background:var(--primary-hover);
-
     transform:translateY(-3px);
 
 }
 .secondary-btn{
 
     height:62px;
-
     border-radius:18px;
-
     border:1px solid var(--border);
-
     background:var(--card);
-
     color:rgb(255, 255, 255);
-
     cursor:pointer;
-
     transition:.25s;
-
     font-size:18px;
 
 }
 .secondary-btn:hover{
-
     background:var(--card-hover);
-
 }
 button{
 
@@ -256,39 +185,27 @@ button{
 button:active{
 
     transform:
-
     scale(.96);
 
 }
 .features{
 
     margin-top:45px;
-
     display:flex;
-
     justify-content:center;
-
     gap:18px;
 
 }
 .feature{
 
     padding:
-
     10px 16px;
-
     background:
-
     var(--card);
-
     border:
-
     1px solid
-
     var(--border);
-
     border-radius:16px;
-
     color:var(--sub);
 
 }
@@ -299,47 +216,32 @@ button:active{
 .video-container{
 
     position: relative;
-
     width:100%;
-
     aspect-ratio:9/16;
-
     max-height:70vh;
-
     overflow:hidden;
-
     border-radius:28px;
-
     position: relative;
 
 }
 .video-container video{
 
     width:100%;
-
     height:100%;
-
     object-fit:contain;
-
     background:rgb(7, 7, 7);
-
 
 }
 .connection-badge1{
 
     position: absolute;
-
     top: 10px;
     left: 50%;
-
     transform: translateX(-50%);
-
     color:white;
-    
    background: rgba(0, 0, 0, 0.45);
     padding: 8px 16px;
     border-radius: 16px;
-
     z-index: 5;
 
 }
@@ -351,63 +253,43 @@ button:active{
 .connection-badge2{
 
     position: absolute;
-
     top: 10px;
     left: 50%;
-
     transform: translateX(-50%);
-
     color:white;
-    
    background: rgba(0,0,0,.45);
     padding: 8px 16px;
     border-radius: 16px;
-
     z-index: 5;
 
 }
 .bottom-controls{
 
     position:fixed;
-
     bottom:35px;
-
     left:50%;
-
     transform:translateX(-50%);
-
     z-index:5;
-
     display:flex;
-
     gap:25px;
 
 }
 .bottom-controls button{
 
     width:72px;
-
     height:72px;
-
     border-radius:50%;
-
     border:none;
-
     background:
-
     rgba(255,255,255,.12);
-
     backdrop-filter:blur(20px);
-
     color:white;
-
     font-size:26px;
 
 }
 .bottom-controls button:hover{
 
     background:var(--primary);
-
     transform:translateY(-4px);
 
 }
@@ -415,17 +297,11 @@ button:active{
 #backViewerBtn{
 
     position:absolute;
-
     height:30px;
-
     width:50px;
-
     top:10px;
-
     left:10px;
-
     right: auto;
-
     z-index:10;
 
 }
@@ -433,60 +309,37 @@ button:active{
 .connect-card{
 
     margin-top:22px;
-
     padding:12px;
-
     border-radius:26px;
-
     background:rgba(255,255,255,.06);
-
     backdrop-filter:blur(18px);
-
     border:1px solid rgba(255,255,255,.08);
-
     text-align:center;
-
     
-
 }
 
 .connect-card h3{
 
     color:white;
-
     font-size: 16px;
-
     text-align:center;
-
     justify-content: center;
-
 
 }
 .qr-bar{
 
     min-height:100px;
     flex-shrink:0;
-
     display:flex;
-
     align-items:center;
-
     justify-content:space-between;
-
     gap:10px;
-
     padding:12px ;
-
     margin-bottom:15px;
-
     color:#ecf0f3; 
-
     background:rgba(255,255,255,.06);
-
     backdrop-filter:blur(18px);
-
     border:1px solid rgba(255,255,255,.08);
-
     border-radius:20px;
 
 }
@@ -495,15 +348,10 @@ button:active{
 .qr-bar h3{
 
     display:flex;
-
     margin:0;
-
     font-size:15px;
-
     color:#ecf0f3;
-
     align-items: center;
-
     justify-content: center;
 
 }
@@ -512,11 +360,8 @@ button:active{
 .room-code{
 
     display:flex;
-
     font-size:24px;
-
     font-weight:700;
-
     letter-spacing:5px;
 
 }
@@ -597,20 +442,15 @@ button:active{
 section{
 
     animation-duration:.35s;
-
     animation-timing-function:ease;
 
 }
-
-
 .page-enter{
 
     animation-name:
     pageEnter;
 
 }
-
-
 .page-exit{
 
     animation-name:
@@ -622,47 +462,31 @@ section{
 @keyframes pageEnter{
 
     from{
-
         opacity:0;
-
         transform:
         translateX(40px);
-
     }
 
 
     to{
-
         opacity:1;
-
         transform:
         translateX(0);
-
     }
 
 }
 
-
-
 @keyframes pageExit{
 
     from{
-
         opacity:1;
-
         transform:
         translateX(0);
-
     }
-
-
     to{
-
         opacity:0;
-
         transform:
         translateX(-40px);
-
     }
 
 }
@@ -671,57 +495,36 @@ section{
    Page Animation
 ===================== */
 
-
 section{
 
     animation-duration:.3s;
-
     animation-fill-mode:both;
 
 }
-
-
-
 .page-enter{
 
     animation-name:
     slideIn;
 
 }
-
-
-
 .page-exit{
 
     animation-name:
     slideOut;
 
 }
-
-
-
 @keyframes slideIn{
 
-
     from{
-
         opacity:0;
-
         transform:
         translateX(35px);
-
     }
-
-
     to{
-
         opacity:1;
-
         transform:
         translateX(0);
-
     }
-
 
 }
 
@@ -729,27 +532,16 @@ section{
 
 @keyframes slideOut{
 
-
     from{
-
         opacity:1;
-
         transform:
         translateX(0);
-
     }
-
-
     to{
-
         opacity:0;
-
         transform:
         translateX(-35px);
-
     }
-
-
 }
 .hidden{
 
@@ -765,13 +557,9 @@ section{
 .sheet-handle{
 
     width:50px;
-
     height:5px;
-
     background:#777;
-
     border-radius:20px;
-
     margin:0 auto 20px;
 
 }
@@ -803,11 +591,8 @@ section{
 
     width:9px;
     height:9px;
-
     border-radius:50%;
-
     background:#A8D8EA;
-
     animation:pulse 1.5s infinite;
 }
 
@@ -827,4 +612,16 @@ section{
         box-shadow:0 0 0 0 rgba(168,216,234,0);
     }
 
+}
+
+.status-waiting .status-dot{
+    background:#A8D8EA;
+}
+
+.status-connected .status-dot{
+    background:#22C55E;
+}
+
+.status-error .status-dot{
+    background:#EF4444;
 }
