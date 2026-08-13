@@ -252,3 +252,12 @@ function showViewerBack(){
     backViewerBtn.classList.remove("hidden");
 
 }
+
+const cameraControlsBtn = document.getElementById("cameraControlsBtn");
+const cameraControlsPanel = document.getElementById("cameraControlsPanel");
+
+if (cameraControlsBtn && cameraControlsPanel) {
+    cameraControlsBtn.addEventListener("click", () => {
+        cameraControlsPanel.classList.toggle("open");
+    });
+}

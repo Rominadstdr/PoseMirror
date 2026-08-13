@@ -85,7 +85,61 @@ if (capabilities.torch) {
   torchBtn.style.display = "none";
 }
 
+        const exposureControl = document.getElementById("exposureControl");
+        const exposureSlider = document.getElementById("exposureSlider");
+
+    if (capabilities.exposureCompensation) {
+  exposureControl.style.display = "block";
+
+  exposureSlider.min = capabilities.exposureCompensation.min;
+  exposureSlider.max = capabilities.exposureCompensation.max;
+  exposureSlider.step = capabilities.exposureCompensation.step || 0.1;
+  exposureSlider.value = 0;
+
+  exposureSlider.oninput = async () => {
+    await track.applyConstraints({
+      advanced: [{
+        exposureCompensation: Number(exposureSlider.value)
+      }]
+    });
+  };
+} else {
+  exposureControl.style.display = "none";
+}
+
+        const focusControl = document.getElementById("focusControl");
+        const focusSelect = document.getElementById("focusSelect");
+
+    if (capabilities.focusMode) {
+  focusControl.style.display = "block";
+
+  focusSelect.innerHTML = capabilities.focusMode
+    .map(mode => `<option value="${mode}">${mode}</option>`)
+    .join("");
+
+  focusSelect.onchange = async () => {
+    await track.applyConstraints({
+      advanced: [{ focusMode: focusSelect.value }]
+    });
+  };
+} else {
+  focusControl.style.display = "none";
+}
+
+const qualitySelect = document.getElementById("qualitySelect");
+
+qualitySelect.onchange = async () => {
+  const height = Number(qualitySelect.value);
+
+  await track.applyConstraints({
+    width: height === 1080 ? 1920 : 1280,
+    height: height
+  });
+};
+
+
     localVideo.srcObject = localStream;
+
 
     await localVideo.play().catch(()=>{});
 

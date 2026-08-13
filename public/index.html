@@ -194,9 +194,9 @@
 
     </div>
 
-
-        <div id="zoomControl" style="display:none;">
-  <label for="zoomSlider">Zoom</label>
+<div id="focusControl" class="control-group" style="display:none;">
+    <div id="zoomControl" style="display:none;">
+    <label for="zoomSlider">Zoom</label>
     <input
     type="range"
     id="zoomSlider"
@@ -210,6 +210,35 @@
             Flash
         </button>
 
+        <div id="exposureControl" style="display:none;">
+            <label for="exposureSlider">Exposure</label>
+            <input
+        type="range"
+        id="exposureSlider"
+        min="-2"
+        max="2"
+        step="0.1"
+        value="0">
+            </div>
+
+        <div id="focusControl" style="display:none;">
+             <label for="focusSelect">Focus</label>
+
+            <select id="focusSelect">
+            <option value="">Loading...</option>
+            </select>
+        </div>
+
+    <div id="qualityControl">
+         <label for="qualitySelect">Quality</label>
+
+        <select id="qualitySelect">
+        <option value="720">720p</option>
+        <option value="1080">1080p</option>
+        </select>
+    </div>
+</div>
+        
 
     <div class="bottom-controls">
 
