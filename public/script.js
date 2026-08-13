@@ -38,6 +38,21 @@ document.getElementById("backViewerBtn");
 const refreshCodeBtn =
 document.getElementById("refreshCodeBtn");
 
+const moreBtn = 
+document.getElementById("moreBtn");
+
+const toolsPanel = 
+document.getElementById("toolsPanel");
+
+const gridToggle = 
+document.getElementById("gridToggle");
+
+const flashToggle = 
+document.getElementById("flashToggle");
+
+const gridOverlay = 
+document.getElementById("gridOverlay");
+
 
 // ---------- Sections ----------
 
@@ -142,7 +157,34 @@ viewerBtn.onclick = ()=>{
 
 };
 
+//btn//
+moreBtn.onclick = ()=>{
 
+    toolsPanel.classList.toggle("hidden");
+
+};
+
+let gridEnabled = false;
+
+gridToggle.onclick = ()=>{
+
+    gridEnabled = !gridEnabled;
+
+    gridToggle.classList.toggle("active");
+
+    gridOverlay.classList.toggle("hidden");
+
+};
+
+let flashEnabled = false;
+
+flashToggle.onclick = ()=>{
+
+    flashEnabled = !flashEnabled;
+
+    flashToggle.classList.toggle("active");
+
+};
 // ==========================================
 // Connect Button
 // ==========================================

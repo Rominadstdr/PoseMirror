@@ -184,7 +184,7 @@
         playsinline>
         </video>
 
-
+        <div id="gridOverlay" class="grid-overlay hidden"></div>
 
         <div class="connection-badge1" id="cameraStatus">
     <span class="status-dot"></span>
@@ -200,23 +200,33 @@
 
     <div class="bottom-controls">
 
+        <button id="switchCameraBtn">🔄</button>
 
-        <button 
-        id="switchCameraBtn">
+        <button id="captureLocalBtn">📸</button>
 
-            🔄
+        <div id="toolsPanel" class="tools-panel hidden">
 
+    <div class="tool-row">
+
+        <span>Grid</span>
+
+        <button id="gridToggle" class="toggle-switch">
+            <span class="toggle-circle"></span>
         </button>
 
+        </div>
 
+            <div class="tool-row">
 
-        <button 
-        id="captureLocalBtn">
+        <span>Flash</span>
 
-            📸
-
+        <button id="flashToggle" class="toggle-switch">
+            <span class="toggle-circle"></span>
         </button>
 
+            </div>
+
+        </div>
 
     </div>
 
