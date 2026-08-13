@@ -158,33 +158,24 @@ viewerBtn.onclick = ()=>{
 };
 
 //btn//
-moreBtn.onclick = ()=>{
+if (moreBtn && toolsPanel) {
+    moreBtn.onclick = () => {
+        toolsPanel.classList.toggle("hidden");
+    };
+}
 
-    toolsPanel.classList.toggle("hidden");
+if (gridToggle && gridOverlay) {
+    gridToggle.onclick = () => {
+        gridToggle.classList.toggle("active");
+        gridOverlay.classList.toggle("hidden");
+    };
+}
 
-};
-
-let gridEnabled = false;
-
-gridToggle.onclick = ()=>{
-
-    gridEnabled = !gridEnabled;
-
-    gridToggle.classList.toggle("active");
-
-    gridOverlay.classList.toggle("hidden");
-
-};
-
-let flashEnabled = false;
-
-flashToggle.onclick = ()=>{
-
-    flashEnabled = !flashEnabled;
-
-    flashToggle.classList.toggle("active");
-
-};
+if (flashToggle) {
+    flashToggle.onclick = () => {
+        flashToggle.classList.toggle("active");
+    };
+}
 // ==========================================
 // Connect Button
 // ==========================================
