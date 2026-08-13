@@ -1,6 +1,9 @@
+// ==============================
+// UI Manager
+// ==============================
 
 // ==============================
-// UI Manager      
+// UI Manager
 // ==============================
 
 
@@ -252,20 +255,3 @@ function showViewerBack(){
     backViewerBtn.classList.remove("hidden");
 
 }
-const cameraControlsBtn = document.getElementById("cameraControlsBtn");
-const cameraControlsPanel = document.getElementById("cameraControlsPanel");
-
-cameraControlsBtn?.addEventListener("click", (e) => {
-    e.stopPropagation();
-    cameraControlsPanel.classList.toggle("open");
-});
-
-document.addEventListener("click", (e) => {
-    if (
-        cameraControlsPanel.classList.contains("open") &&
-        !cameraControlsPanel.contains(e.target) &&
-        e.target !== cameraControlsBtn
-    ){
-        cameraControlsPanel.classList.remove("open");
-    }
-});
