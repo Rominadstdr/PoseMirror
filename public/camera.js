@@ -38,9 +38,52 @@ await navigator.mediaDevices.getUserMedia({
     }
 },
 
-    audio:false
+    audio:true
 
 });
+
+  const track = localStream.getVideoTracks()[0];
+  const capabilities = track.getCapabilities();
+
+  const zoomControl = document.getElementById("zoomControl");
+const zoomSlider = document.getElementById("zoomSlider");
+
+if (capabilities.zoom) {
+  zoomControl.style.display = "block";
+
+  zoomSlider.min = capabilities.zoom.min;
+  zoomSlider.max = capabilities.zoom.max;
+  zoomSlider.step = capabilities.zoom.step || 0.1;
+  zoomSlider.value = capabilities.zoom.min;
+
+  zoomSlider.oninput = async () => {
+    await track.applyConstraints({
+      advanced: [{ zoom: Number(zoomSlider.value) }]
+    });
+  };
+} else {
+  zoomControl.style.display = "none";
+}
+
+  console.log("Camera Track:", track);
+  console.log("Camera Capabilities:", capabilities);
+
+         const torchBtn = document.getElementById("torchBtn");
+let torchOn = false;
+
+if (capabilities.torch) {
+  torchBtn.style.display = "block";
+
+  torchBtn.onclick = async () => {
+    torchOn = !torchOn;
+
+    await track.applyConstraints({
+      advanced: [{ torch: torchOn }]
+    });
+  };
+} else {
+  torchBtn.style.display = "none";
+}
 
     localVideo.srcObject = localStream;
 
